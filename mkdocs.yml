@@ -1,16 +1,14 @@
 # mkdocs.yml
 # Configuration file for MkDocs (Automated project documentation generator)
 
-# TODO: Change denisecase to your GitHub username (use CTRL F to find all instances)
-# TODO: Change pro-analytics-02-starter to your repository name (use CTRL F to find all instances)
 # TODO: Update site_description
 # TODO: Update site_author
 
-site_name: Professional Analytics Project
-site_url: https://denisecase.github.io/pro-analytics-02-starter/
-repo_url: https://github.com/denisecase/pro-analytics-02-starter
-site_description: Professional Python project demonstrating industry best practices
-site_author: Denise Case
+site_name: 44-632 - BI and Analytics - Week 1 Project - Getting Started, Adding Raw Data
+site_url: https://karlidean.github.io/smart-store-karlidean/
+repo_url: https://github.com/karlidean/smart-store-karlidean
+site_description: Working with a new setup process and new repo formats.
+site_author: Karli Dean
 docs_dir: docs
 site_dir: site
 
