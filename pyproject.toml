@@ -1,4 +1,4 @@
-# pyproject.toml: Modern Python project configuration
+# pyproject.toml: Modern Python Project Configuration
 
 # Replaces requirements.txt, setup.py, and multiple config files
 # This ONE file manages dependencies, tools, and standards
@@ -9,7 +9,7 @@ build-backend = "setuptools.build_meta"
 requires = ["setuptools>=80", "wheel"]
 
 [project]
-authors = [{name = "Denise Case"}] # TODO: Change to YOUR name (ownership matters)
+authors = [{name = "Karli Dean"}]
 classifiers = [
   "Programming Language :: Python :: 3 :: Only",
   "Programming Language :: Python :: 3.12",
