@@ -31,10 +31,10 @@ dependencies = [ # fmt: off
 ]  # fmt: on
 
 [project.urls]
-"Bug Tracker" = "https://github.com/denisecase/pro-analytics-02-starter/issues"
-Documentation = "https://denisecase.github.io/pro-analytics-02-starter/"
-Homepage = "https://github.com/denisecase/pro-analytics-02-starter"
-Repository = "https://github.com/denisecase/pro-analytics-02-starter"
+"Bug Tracker" = "https://github.com/karlidean/smart-store-karlidean/issues"
+Documentation = "https://karlidean.github.io/smart-store-karlidean/"
+Homepage = "https://github.com/karlidean/smart-store-karlidean"
+Repository = "https://github.com/karlidean/smart-store-karlidean"
 
 [project.optional-dependencies]
 dev = [
