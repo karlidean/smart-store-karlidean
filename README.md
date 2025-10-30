@@ -165,3 +165,5 @@ Each time forward progress is made, remember to git add-commit-push.
 # P2: BI Python - Reading Raw Data into Pandas DataFrames
 Add - Commit - Push after EVERY step. Keeps a good habit.
 1. Created Python file `src/analytics_project/data_prep.py`
+   1. Implemented data from the [example repo material](https://github.com/denisecase/smart-sales-starter-files/blob/main/src/analytics_project/data_prep.py).
+2. Ran the data prep file and updated the README.md.

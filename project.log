@@ -1,0 +1,9 @@
+2025-10-30 16:22:INFO    AT utils_logger.py:105: Logging to file: C:\Repos\smart-store-karlidean\project.log
+2025-10-30 16:22:INFO    AT data_prep.py:52: Starting data preparation...
+2025-10-30 16:22:INFO    AT data_prep.py:32: Reading raw data from C:\Repos\smart-store-karlidean\data\raw\customers_data.csv.
+2025-10-30 16:22:INFO    AT data_prep.py:35: customers_data.csv: loaded DataFrame with shape 201 rows x 4 cols
+2025-10-30 16:22:INFO    AT data_prep.py:32: Reading raw data from C:\Repos\smart-store-karlidean\data\raw\products_data.csv.
+2025-10-30 16:22:INFO    AT data_prep.py:35: products_data.csv: loaded DataFrame with shape 100 rows x 4 cols
+2025-10-30 16:22:INFO    AT data_prep.py:32: Reading raw data from C:\Repos\smart-store-karlidean\data\raw\sales_data.csv.
+2025-10-30 16:22:INFO    AT data_prep.py:35: sales_data.csv: loaded DataFrame with shape 2001 rows x 7 cols
+2025-10-30 16:22:INFO    AT data_prep.py:64: Data preparation complete.
