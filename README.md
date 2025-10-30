@@ -160,3 +160,8 @@ With a working version safe in GitHub, start making changes to the code.
 Before starting a new session, remember to do a `git pull` and keep your tools updated.
 
 Each time forward progress is made, remember to git add-commit-push.
+
+
+# P2: BI Python - Reading Raw Data into Pandas DataFrames
+Add - Commit - Push after EVERY step. Keeps a good habit.
+1. Created Python file `src/analytics_project/data_prep.py`
