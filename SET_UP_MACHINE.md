@@ -16,16 +16,6 @@ On **Windows**:
 
 - Open File Explorer -> View -> Show -> check "File name extensions" and "Hidden items".
 
-On **macOS**:
-
-- Finder -> Settings -> Advanced -> check "Show all filename extensions".
-- To toggle display of hidden files: press Command+Shift+Period in Finder.
-
-On **Linux**:
-
-- Files (Nautilus): press Ctrl+H to toggle hidden files.
-- Extensions are usually visible by default.
-
 ## Step 1.3. (30 min) Install Tools
 
 ### Install Git
@@ -46,19 +36,11 @@ If you forget, **re-install**.
 
 Install `uv` Python virtual environment and dependency manager using the command below:
 
-On **macOS/Linux**, open a Terminal and paste the following command, then hit ENTER:
-
-```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
-```
-
 On **Windows**, open a PowerShell terminal and paste the following command, then hit ENTER:
 
 ```powershell
 iwr -useb https://astral.sh/uv/install.ps1 | iex
 ```
-
-**macOS only:** After installing, open Finder, go to your Python installation folder (e.g., `/Applications/Python 3.12/`), and double-click `Install Certificates.command` to finalize your setup. (You only need to do this once per Mac.)
 
 ### Restart Terminal
 
@@ -85,16 +67,8 @@ In your terminal, type the following commands, one at a time, hitting ENTER afte
 
 **Windows**
 
-```powershell
+```shell
 cd C:\
-mkdir Repos
-cd Repos
-```
-
-**macOS / Linux**
-
-```bash
-cd ~
 mkdir Repos
 cd Repos
 ```
