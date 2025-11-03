@@ -7,3 +7,107 @@
 2025-10-30 16:22:INFO    AT data_prep.py:32: Reading raw data from C:\Repos\smart-store-karlidean\data\raw\sales_data.csv.
 2025-10-30 16:22:INFO    AT data_prep.py:35: sales_data.csv: loaded DataFrame with shape 2001 rows x 7 cols
 2025-10-30 16:22:INFO    AT data_prep.py:64: Data preparation complete.
+2025-11-03 11:45:INFO    AT utils_logger.py:105: Logging to file: C:\Repos\smart-store-karlidean\project.log
+2025-11-03 11:45:INFO    AT demo_module_basics.py:90: Starting demo_python() function.
+2025-11-03 11:45:INFO    AT demo_module_basics.py:37: Name Python files with lowercase and underscores.
+2025-11-03 11:45:INFO    AT demo_module_basics.py:38: In Python, comments start with a '#' symbol and are not executed.
+2025-11-03 11:45:INFO    AT demo_module_basics.py:39: Comments can also be wrapped in triple single quotes or triple backticks.
+2025-11-03 11:45:INFO    AT demo_module_basics.py:43: Variables are used to store values.
+2025-11-03 11:45:INFO    AT demo_module_basics.py:44: Type hints are optional but recommended for clarity.
+2025-11-03 11:45:INFO    AT demo_module_basics.py:45:   example_number = 42
+2025-11-03 11:45:INFO    AT demo_module_basics.py:46:   count: int = 42
+2025-11-03 11:45:INFO    AT demo_module_basics.py:47:   temp_F: float = 42.2
+2025-11-03 11:45:INFO    AT demo_module_basics.py:48:   user_name: str = "Data Analyst"
+2025-11-03 11:45:INFO    AT demo_module_basics.py:54: Result: example_number=42, count=42, temp_f=42.2, user_name='Data Analyst'.
+2025-11-03 11:45:INFO    AT demo_module_basics.py:58: Functions in Python are blocks of reusable code.
+2025-11-03 11:45:INFO    AT demo_module_basics.py:59: You can call a function by using its name followed by parentheses.
+2025-11-03 11:45:INFO    AT demo_module_basics.py:60: We use f-strings to combine text and values in Python.
+2025-11-03 11:45:INFO    AT demo_module_basics.py:61:   Put the 'f' immediately before the opening quote of the string text.
+2025-11-03 11:45:INFO    AT demo_module_basics.py:65: Python has many built-in functions, like min(), max(), and len().
+2025-11-03 11:45:INFO    AT demo_module_basics.py:70: For the list of numbers: [1, 2, 3]
+2025-11-03 11:45:INFO    AT demo_module_basics.py:71:   The minimum value is min(numbers): 1
+2025-11-03 11:45:INFO    AT demo_module_basics.py:72:   The maximum value is max(numbers): 3
+2025-11-03 11:45:INFO    AT demo_module_basics.py:73:   The length of the list is len(numbers): 3
+2025-11-03 11:45:INFO    AT demo_module_basics.py:78: In Python, indentation matters = True!
+2025-11-03 11:45:INFO    AT demo_module_basics.py:79: In Python, spelling matters = True!
+2025-11-03 11:45:INFO    AT demo_module_basics.py:80: In Python, uppercase/lowercase matters = True!
+2025-11-03 11:45:INFO    AT demo_module_basics.py:96: Experiment with this demo script to learn the basics quickly.
+2025-11-03 11:45:INFO    AT demo_module_basics.py:97: Exiting demo_python() function.
+2025-11-03 11:45:INFO    AT demo_module_stats.py:98: 
+STATS SUMMARY
+Scores (n=7): [3.5, 4.0, 4.8, 2.9, 3.7, 4.3, 3.8]
+metric                 value
+----------------------------
+min                     2.90
+max                     4.80
+mean                    3.86
+stdev                   0.60
+
+2025-11-03 11:45:INFO    AT demo_module_languages.py:45: 
+Greetings Professional Analyst:
+English: Hello! Welcome to Python programming.
+Spanish: Hola! Bienvenido a la programación en Python.
+Mandarin: 你好! 欢迎学习Python编程.
+French:  Bonjour! Bienvenue à la programmation Python.
+German:  Hallo! Willkommen bei der Python-Programmierung.
+Telugu:  హలో! Python ప్రోగ్రామింగ్‌లోకి స్వాగతం.
+Norwegian: Hei! Velkommen til Python-programmering.
+2025-11-03 11:45:INFO    AT utils_logger.py:116: This is an example info message.
+2025-11-03 11:45:WARNING AT utils_logger.py:117: This is an example warning message.
+2025-11-03 11:45:ERROR   AT utils_logger.py:118: This is an example error message.
+2025-11-03 11:45:INFO    AT utils_logger.py:116: This is an example info message.
+2025-11-03 11:45:WARNING AT utils_logger.py:117: This is an example warning message.
+2025-11-03 11:45:ERROR   AT utils_logger.py:118: This is an example error message.
+2025-11-03 11:45:INFO    AT utils_logger.py:125: View the log output at C:\Repos\smart-store-karlidean\project.log
+2025-11-03 11:45:INFO    AT test_utils_logger.py:65: Smoke test message
+2025-11-03 11:52:INFO    AT utils_logger.py:105: Logging to file: C:\Repos\smart-store-karlidean\project.log
+2025-11-03 11:52:INFO    AT demo_module_basics.py:90: Starting demo_python() function.
+2025-11-03 11:52:INFO    AT demo_module_basics.py:37: Name Python files with lowercase and underscores.
+2025-11-03 11:52:INFO    AT demo_module_basics.py:38: In Python, comments start with a '#' symbol and are not executed.
+2025-11-03 11:52:INFO    AT demo_module_basics.py:39: Comments can also be wrapped in triple single quotes or triple backticks.
+2025-11-03 11:52:INFO    AT demo_module_basics.py:43: Variables are used to store values.
+2025-11-03 11:52:INFO    AT demo_module_basics.py:44: Type hints are optional but recommended for clarity.
+2025-11-03 11:52:INFO    AT demo_module_basics.py:45:   example_number = 42
+2025-11-03 11:52:INFO    AT demo_module_basics.py:46:   count: int = 42
+2025-11-03 11:52:INFO    AT demo_module_basics.py:47:   temp_F: float = 42.2
+2025-11-03 11:52:INFO    AT demo_module_basics.py:48:   user_name: str = "Data Analyst"
+2025-11-03 11:52:INFO    AT demo_module_basics.py:54: Result: example_number=42, count=42, temp_f=42.2, user_name='Data Analyst'.
+2025-11-03 11:52:INFO    AT demo_module_basics.py:58: Functions in Python are blocks of reusable code.
+2025-11-03 11:52:INFO    AT demo_module_basics.py:59: You can call a function by using its name followed by parentheses.
+2025-11-03 11:52:INFO    AT demo_module_basics.py:60: We use f-strings to combine text and values in Python.
+2025-11-03 11:52:INFO    AT demo_module_basics.py:61:   Put the 'f' immediately before the opening quote of the string text.
+2025-11-03 11:52:INFO    AT demo_module_basics.py:65: Python has many built-in functions, like min(), max(), and len().
+2025-11-03 11:52:INFO    AT demo_module_basics.py:70: For the list of numbers: [1, 2, 3]
+2025-11-03 11:52:INFO    AT demo_module_basics.py:71:   The minimum value is min(numbers): 1
+2025-11-03 11:52:INFO    AT demo_module_basics.py:72:   The maximum value is max(numbers): 3
+2025-11-03 11:52:INFO    AT demo_module_basics.py:73:   The length of the list is len(numbers): 3
+2025-11-03 11:52:INFO    AT demo_module_basics.py:78: In Python, indentation matters = True!
+2025-11-03 11:52:INFO    AT demo_module_basics.py:79: In Python, spelling matters = True!
+2025-11-03 11:52:INFO    AT demo_module_basics.py:80: In Python, uppercase/lowercase matters = True!
+2025-11-03 11:52:INFO    AT demo_module_basics.py:96: Experiment with this demo script to learn the basics quickly.
+2025-11-03 11:52:INFO    AT demo_module_basics.py:97: Exiting demo_python() function.
+2025-11-03 11:52:INFO    AT utils_logger.py:105: Logging to file: C:\Repos\smart-store-karlidean\project.log
+2025-11-03 11:52:INFO    AT demo_module_languages.py:45: 
+Greetings Professional Analyst:
+English: Hello! Welcome to Python programming.
+Spanish: Hola! Bienvenido a la programación en Python.
+Mandarin: 你好! 欢迎学习Python编程.
+French:  Bonjour! Bienvenue à la programmation Python.
+German:  Hallo! Willkommen bei der Python-Programmierung.
+Telugu:  హలో! Python ప్రోగ్రామింగ్‌లోకి స్వాగతం.
+Norwegian: Hei! Velkommen til Python-programmering.
+2025-11-03 11:52:INFO    AT utils_logger.py:105: Logging to file: C:\Repos\smart-store-karlidean\project.log
+2025-11-03 11:52:INFO    AT demo_module_stats.py:98: 
+STATS SUMMARY
+Scores (n=7): [3.5, 4.0, 4.8, 2.9, 3.7, 4.3, 3.8]
+metric                 value
+----------------------------
+min                     2.90
+max                     4.80
+mean                    3.86
+stdev                   0.60
+
+2025-11-03 11:52:INFO    AT utils_logger.py:105: Logging to file: C:\Repos\smart-store-karlidean\project.log
+2025-11-03 11:52:INFO    AT demo_module_viz.py:44: Loaded Penguins dataset successfully.
+2025-11-03 11:52:INFO    AT demo_module_viz.py:52: Displaying chart... Close the window to exit.
+2025-11-03 11:52:INFO    AT demo_module_viz.py:54: Chart closed successfully.
