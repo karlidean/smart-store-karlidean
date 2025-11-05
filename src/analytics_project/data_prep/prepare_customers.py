@@ -27,10 +27,10 @@ import pandas as pd
 sys.path.append(str(pathlib.Path(__file__).resolve().parent.parent.parent))
 
 # Import local modules (e.g. utils/logger.py)
-from utils.logger import logger
+from src.analytics_project.utils_logger import logger
 
 # Optional: Use a data_scrubber module for common data cleaning tasks
-from utils.data_scrubber import DataScrubber
+from src.analytics_project.utils_data_scrubber import DataScrubber
 
 
 # Constants
