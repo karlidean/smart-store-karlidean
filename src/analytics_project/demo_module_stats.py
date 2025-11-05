@@ -29,7 +29,7 @@ from collections.abc import Sequence
 import statistics
 
 # Import the shared logger
-from .utils_logger import init_logger, logger
+from .utils.logger import init_logger, logger
 
 #####################################
 # Define Functions

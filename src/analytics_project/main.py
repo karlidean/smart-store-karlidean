@@ -26,7 +26,7 @@ from .demo_module_basics import demo_basics
 from .demo_module_languages import demo_greetings
 from .demo_module_stats import demo_stats
 from .demo_module_viz import demo_viz
-from .utils_logger import init_logger, logger
+from .utils.logger import init_logger, logger
 
 
 def main() -> int:

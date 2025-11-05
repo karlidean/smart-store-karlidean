@@ -6,7 +6,7 @@ and maintain audit trails during data analysis workflows.
 Module Information:
     - Filename: utils_logger.py
     - Module: utils_logger
-    - Location: src/analytics_project/
+    - Location: src/analytics_project/utils
 
 Key Concepts:
     - Centralized logging configuration

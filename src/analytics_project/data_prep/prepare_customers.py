@@ -1,5 +1,5 @@
 """
-scripts/data_preparation/prepare_customers.py
+scripts/analytics_project/data_preparation/prepare_customers.py
 
 This script reads customer data from the data/raw folder, cleans the data,
 and writes the cleaned version to the data/prepared folder.
@@ -27,10 +27,10 @@ import pandas as pd
 sys.path.append(str(pathlib.Path(__file__).resolve().parent.parent.parent))
 
 # Import local modules (e.g. utils/logger.py)
-from src.analytics_project.utils_logger import logger
+from analytics_project.utils.logger import logger
 
 # Optional: Use a data_scrubber module for common data cleaning tasks
-from src.analytics_project.utils_data_scrubber import DataScrubber
+from analytics_project.utils.data_scrubber import DataScrubber
 
 
 # Constants
@@ -96,19 +96,26 @@ def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         pd.DataFrame: DataFrame with duplicates removed.
     """
+
+
+def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Remove duplicate rows from the DataFrame.
+    """
     logger.info(f"FUNCTION START: remove_duplicates with dataframe shape={df.shape}")
 
-    # Let's delegate this to the DataScrubber class
-    # First, create an instance of the DataScrubber class
-    # by passing in the dataframe as an argument.
+    # Create DataScrubber instance
     df_scrubber = DataScrubber(df)
 
-    # Now, call the method on our instance to remove duplicates.
-    # This method will return a new dataframe with duplicates removed.
-    df_deduped = df_scrubber.remove_duplicate_records()
+    # Perform deduplication
+    df_deduped = df_scrubber.remove_duplicates()
 
+    # Log shapes
     logger.info(f"Original dataframe shape: {df.shape}")
-    logger.info(f"Deduped  dataframe shape: {df_deduped.shape}")
+    print(f"Original dataframe shape: {df.shape}")
+    logger.info(f"Deduped dataframe shape: {df_deduped.shape}")
+    print(f"Deduped dataframe shape: {df_deduped.shape}")
+
     return df_deduped
 
 

@@ -29,7 +29,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Import the shared logger
-from .utils_logger import init_logger, logger
+from .utils.logger import init_logger, logger
 
 #####################################
 # Define Functions
