@@ -68,7 +68,7 @@ def read_raw_data(file_name: str) -> pd.DataFrame:
     logger.info(f"READING FUNCTION STATUS: COMPLETE! Loaded dataframe with {len(df)} rows and {len(df.columns)} columns")
     print(f"READING FUNCTION STATUS: COMPLETE! Loaded dataframe with {len(df)} rows and {len(df.columns)} columns")
     
-    ''' Logging Unique Values '''
+    ''' UNIQUE VALUES AND DATA TYPES '''
     logger.info(f"Column datatypes: \n{df.dtypes}")
     print(f"Column datatypes: \n{df.dtypes}")
     logger.info(f"Number of unique values: \n{df.nunique()}")
