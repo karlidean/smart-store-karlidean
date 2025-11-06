@@ -57,26 +57,22 @@ PREPARED_DATA_DIR.mkdir(exist_ok=True)
 
 
 def read_raw_data(file_name: str) -> pd.DataFrame:
-    """
-    Read raw data from CSV.
-
-    Args:
-        file_name (str): Name of the CSV file to read.
-
-    Returns:
-        pd.DataFrame: Loaded DataFrame.
-    """
-    logger.info(f"FUNCTION START: read_raw_data with file_name={file_name}")
+    ''' INITIALIZATION PHASE '''
+    logger.info(f"READING FUNCTION START: read_raw_data with file_name={file_name}")
+    print (f"READING FUNCTION START: read_raw_data with file_name={file_name}")
+    
     file_path = RAW_DATA_DIR.joinpath(file_name)
-    logger.info(f"Reading data from {file_path}")
     df = pd.read_csv(file_path)
-    logger.info(f"Loaded dataframe with {len(df)} rows and {len(df.columns)} columns")
 
-    # TODO: OPTIONAL Add data profiling here to understand the dataset
-    # Suggestion: Log the datatypes of each column and the number of unique values
-    # Example:
-    # logger.info(f"Column datatypes: \n{df.dtypes}")
-    # logger.info(f"Number of unique values: \n{df.nunique()}")
+    '''COMPLETION PHASE'''
+    logger.info(f"READING FUNCTION STATUS: COMPLETE! Loaded dataframe with {len(df)} rows and {len(df.columns)} columns")
+    print(f"READING FUNCTION STATUS: COMPLETE! Loaded dataframe with {len(df)} rows and {len(df.columns)} columns")
+    
+    ''' Logging Unique Values '''
+    logger.info(f"Column datatypes: \n{df.dtypes}")
+    print(f"Column datatypes: \n{df.dtypes}")
+    logger.info(f"Number of unique values: \n{df.nunique()}")
+    print(f"Number of unique values: \n{df.nunique()}")
 
     return df
 
