@@ -86,9 +86,8 @@ def main() -> None:
     """
     Main function for processing data.
     """
-    logger.info("==================================")
-    logger.info("STARTING prepare_sales_data.py")
-    logger.info("==================================")
+    logger.info("====== INITIALIZING SALES DATA CLEANING PROCESS ======")
+    print("====== INITIALIZING SALES DATA CLEANING PROCESS ======")
 
     logger.info(f"Root         : {PROJECT_ROOT}")
     logger.info(f"data/raw     : {RAW_DATA_DIR}")
@@ -130,9 +129,8 @@ def main() -> None:
     logger.info("==================================")
     logger.info(f"Original shape: {df.shape}")
     logger.info(f"Cleaned shape:  {original_shape}")
-    logger.info("==================================")
-    logger.info("FINISHED prepare_sales_data.py")
-    logger.info("==================================")
+    logger.info("====== COMPLETED SALES DATA CLEANING PROCESS ======")
+
 
 
 #####################################
