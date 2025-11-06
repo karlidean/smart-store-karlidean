@@ -91,24 +91,34 @@ def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def handle_missing_values(df: pd.DataFrame) -> pd.DataFrame:
-    logger.info(f"FUNCTION START: handle_missing_values with dataframe shape={df.shape}")
+    logger.info(f"MISSING VALUE FUNCTION START: handle_missing_values with dataframe shape={df.shape}")
+    print(f"MISSING VALUE FUNCTION START: handle_missing_values with dataframe shape={df.shape}")
+    logger.info(f'MISSING VALUE STATUS: {df.isnull()}')
+    print(f'MISSING VALUE STATUS: {df.isnull()}')
 
     # Log missing values count before handling
     missing_before = df.isna().sum().sum()
     logger.info(f"Total missing values before handling: {missing_before}")
     print(f"Total missing values before handling: {missing_before}")
 
-    if '
-
-    # TODO: Fill or drop missing values based on business rules
-    # Example:
-    # df['CustomerName'].fillna('Unknown', inplace=True)
-    # df.dropna(subset=['CustomerID'], inplace=True)
-
-    # Log missing values count after handling
+    if 'MemberPoints' in df.columns:
+        median_points = df['MemberPoints'].median()
+        df.loc[:, 'MemberPoints'] = df['MemberPoints'].fillna(median_points)
+        
+    if 'MemberStatus' in df.columns:
+        mode_style = df['MemberStatus'].mode()
+        df.loc[:, 'MemberStatus'] = df['MemberStatus'].fillna(mode_style)
+        
+    if 'Preferred Contact' in df.columns:
+        mode_style = df['Preferred Contact'].mode()
+        df.loc[:, 'Preferred Contact'] = df['Preferred Contact'].fillna(mode_style) 
+        
     missing_after = df.isna().sum().sum()
     logger.info(f"Total missing values after handling: {missing_after}")
+    print(f"Total missing values after handling: {missing_after}")
     logger.info(f"{len(df)} records remaining after handling missing values.")
+    print(f"{len(df)} records remaining after handling missing values.")
+    print(f'MISSING VALUE FUNCTION STATUS: COMPLETE')
     return df
 
 
