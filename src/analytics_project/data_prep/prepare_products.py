@@ -52,18 +52,9 @@ PREPARED_DATA_DIR.mkdir(exist_ok=True)
 
 
 def read_raw_data(file_name: str) -> pd.DataFrame:
-    """
-    Read raw data from CSV.
-
-    Args:
-        file_name (str): Name of the CSV file to read.
-
-    Returns:
-        pd.DataFrame: Loaded DataFrame.
-    """
-    logger.info(f"FUNCTION START: read_raw_data with file_name={file_name}")
+    logger.info(f"READING FUNCTION START: read_raw_data with file_name={file_name}")
     file_path = RAW_DATA_DIR.joinpath(file_name)
-    logger.info(f"Reading data from {file_path}")
+    logger.info(f"Obtaining data from {file_path}")
     df = pd.read_csv(file_path)
     logger.info(f"Loaded dataframe with {len(df)} rows and {len(df.columns)} columns")
 
@@ -77,43 +68,24 @@ def read_raw_data(file_name: str) -> pd.DataFrame:
 
 
 def save_prepared_data(df: pd.DataFrame, file_name: str) -> None:
-    """
-    Save cleaned data to CSV.
-
-    Args:
-        df (pd.DataFrame): Cleaned DataFrame.
-        file_name (str): Name of the output file.
-    """
     logger.info(
-        f"FUNCTION START: save_prepared_data with file_name={file_name}, dataframe shape={df.shape}"
+        f"SAVING FUNCTION START: save_prepared_data with file_name={file_name}, dataframe shape={df.shape}"
     )
     file_path = PREPARED_DATA_DIR.joinpath(file_name)
     df.to_csv(file_path, index=False)
-    logger.info(f"Data saved to {file_path}")
+    logger.info(f"SAVING FUNCTION STATUS: COMPLETE! Data saved to {file_path}")
 
 
 def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Remove duplicate rows from the DataFrame.
+    logger.info(f"DUPLICATE REMOVAL FUNCTION START: removing duplicates with dataframe shape={df.shape}")
 
-    Args:
-        df (pd.DataFrame): Input DataFrame.
+    # Perform deduplication
+    df_deduped = df.drop_duplicates()
 
-    Returns:
-        pd.DataFrame: DataFrame with duplicates removed.
-    """
-    logger.info(f"FUNCTION START: remove_duplicates with dataframe shape={df.shape}")
-    initial_count = len(df)
+    # Log shapes
+    logger.info(f"Deduplication function successful. Deduped dataframe shape: {df_deduped.shape}")
+    print(f"Deduplication function successful. Deduped dataframe shape: {df_deduped.shape}")
 
-    # TODO: Consider which columns should be used to identify duplicates
-    # Example: For products, SKU or product code is typically unique
-    # So we could do something like this:
-    # df = df.drop_duplicates(subset=['product_code'])
-    df = df.drop_duplicates()
-
-    removed_count = initial_count - len(df)
-    logger.info(f"Removed {removed_count} duplicate rows")
-    logger.info(f"{len(df)} records remaining after removing duplicates.")
     return df
 
 
