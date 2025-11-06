@@ -68,13 +68,24 @@ def read_raw_data(file_name: str) -> pd.DataFrame:
 
 
 def save_prepared_data(df: pd.DataFrame, file_name: str) -> None:
-    ''' Saves the data to a CSV '''
-    logger.info(
-        f"SAVING FUNCTION START: Saving prepared data with filename {file_name}, the dataframe's shape is {df.shape}"
-    )
-    file_path = PREPARED_DATA_DIR.joinpath(file_name)
-    df.to_csv(file_path, index=False)
-    logger.info(f"Data was successfully saved to {file_path}")
+    ''' INITIALIZATION PHASE '''
+    logger.info(f"READING FUNCTION STATUS: INITIALIZATION! read_raw_data with file_name={file_name}")
+    print (f"READING FUNCTION START: read_raw_data with file_name={file_name}")
+    
+    file_path = RAW_DATA_DIR.joinpath(file_name)
+    df = pd.read_csv(file_path)
+
+    '''COMPLETION PHASE'''
+    logger.info(f"READING FUNCTION STATUS: COMPLETE! Loaded dataframe with {len(df)} rows and {len(df.columns)} columns")
+    print(f"READING FUNCTION STATUS: COMPLETE! Loaded dataframe with {len(df)} rows and {len(df.columns)} columns")
+    
+    ''' UNIQUE VALUES AND DATA TYPES '''
+    logger.info(f"Column datatypes: \n{df.dtypes}")
+    print(f"Column datatypes: \n{df.dtypes}")
+    logger.info(f"Number of unique values: \n{df.nunique()}")
+    print(f"Number of unique values: \n{df.nunique()}")
+
+    return df
 
 
 def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
