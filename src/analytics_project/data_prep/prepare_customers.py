@@ -40,7 +40,7 @@ DATA_DIR: pathlib.Path = PROJECT_ROOT / "data"
 RAW_DATA_DIR: pathlib.Path = DATA_DIR / "raw"
 PREPARED_DATA_DIR: pathlib.Path = DATA_DIR / "prepared"  # place to store prepared data
 
-print(f'Raw Data Directory resolved to: {RAW_DATA_DIR}')
+print(f'Raw Data is stored here: {RAW_DATA_DIR}')
 
 
 # Ensure the directories exist
