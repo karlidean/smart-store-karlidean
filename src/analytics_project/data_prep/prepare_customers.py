@@ -155,9 +155,7 @@ def main() -> None:
     """
     Main function for processing customer data.
     """
-    logger.info("==================================")
-    logger.info("STARTING prepare_customers_data.py")
-    logger.info("==================================")
+    logger.info("====== INITIALIZING CLEANING OF CUSTOMER FILE ======")
 
     logger.info(f"Root         : {PROJECT_ROOT}")
     logger.info(f"data/raw     : {RAW_DATA_DIR}")
