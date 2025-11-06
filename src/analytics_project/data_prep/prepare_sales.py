@@ -58,7 +58,7 @@ PREPARED_DATA_DIR.mkdir(exist_ok=True)
 
 def read_raw_data(file_name: str) -> pd.DataFrame:
     ''' INITIALIZATION PHASE '''
-    logger.info(f"READING FUNCTION START: read_raw_data with file_name={file_name}")
+    logger.info(f"READING FUNCTION STATUS: INITIALIZATION! read_raw_data with file_name={file_name}")
     print (f"READING FUNCTION START: read_raw_data with file_name={file_name}")
     
     file_path = RAW_DATA_DIR.joinpath(file_name)
