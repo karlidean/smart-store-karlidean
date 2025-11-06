@@ -54,15 +54,20 @@ PREPARED_DATA_DIR.mkdir(exist_ok=True)
 def read_raw_data(file_name: str) -> pd.DataFrame:
     ''' INITIALIZATION PHASE '''
     logger.info(f"READING FUNCTION STATUS: INITIALIZATION! read_raw_data with file_name={file_name}")
-    print(f"READING FUNCTION STATUS: INITIALIZATION! read_raw_data with file_name={file_name}")
+    print (f"READING FUNCTION START: read_raw_data with file_name={file_name}")
+    
     file_path = RAW_DATA_DIR.joinpath(file_name)
-    logger.info(f"Obtaining data from {file_path}")
     df = pd.read_csv(file_path)
-    logger.info(f"READING FUNCTION STATUS: COMPLETE!Loaded dataframe with {len(df)} rows and {len(df.columns)} columns")
 
-    ''' DATA TYPES AND VALUES '''
+    '''COMPLETION PHASE'''
+    logger.info(f"READING FUNCTION STATUS: COMPLETE! Loaded dataframe with {len(df)} rows and {len(df.columns)} columns")
+    print(f"READING FUNCTION STATUS: COMPLETE! Loaded dataframe with {len(df)} rows and {len(df.columns)} columns")
+    
+    ''' UNIQUE VALUES AND DATA TYPES '''
     logger.info(f"Column datatypes: \n{df.dtypes}")
+    print(f"Column datatypes: \n{df.dtypes}")
     logger.info(f"Number of unique values: \n{df.nunique()}")
+    print(f"Number of unique values: \n{df.nunique()}")
 
     return df
 
