@@ -29,9 +29,6 @@ sys.path.append(str(pathlib.Path(__file__).resolve().parent.parent.parent))
 # Import local modules (e.g. utils/logger.py)
 from analytics_project.utils.logger import logger
 
-# Optional: Use a data_scrubber module for common data cleaning tasks
-from analytics_project.utils.data_scrubber import DataScrubber
-
 
 # Constants
 SCRIPTS_DATA_PREP_DIR: pathlib.Path = (
@@ -43,14 +40,16 @@ DATA_DIR: pathlib.Path = PROJECT_ROOT / "data"
 RAW_DATA_DIR: pathlib.Path = DATA_DIR / "raw"
 PREPARED_DATA_DIR: pathlib.Path = DATA_DIR / "prepared"  # place to store prepared data
 
+print(f'Raw Data Directory resolved to: {RAW_DATA_DIR}')
 
-# Ensure the directories exist or create them
+
+# Ensure the directories exist
 DATA_DIR.mkdir(exist_ok=True)
 RAW_DATA_DIR.mkdir(exist_ok=True)
 PREPARED_DATA_DIR.mkdir(exist_ok=True)
 
 #####################################
-# Define Functions - Reusable blocks of code / instructions
+# Functions and Instructions
 #####################################
 
 
@@ -69,72 +68,37 @@ def read_raw_data(file_name: str) -> pd.DataFrame:
 
 
 def save_prepared_data(df: pd.DataFrame, file_name: str) -> None:
-    """
-    Save cleaned data to CSV.
-
-    Args:
-        df (pd.DataFrame): Cleaned DataFrame.
-        file_name (str): Name of the output file.
-    """
+    ''' Saves the data to a CSV '''
     logger.info(
-        f"FUNCTION START: save_prepared_data with file_name={file_name}, dataframe shape={df.shape}"
+        f"SAVING FUNCTION START: Saving prepared data with filename {file_name}, the dataframe's shape is {df.shape}"
     )
     file_path = PREPARED_DATA_DIR.joinpath(file_name)
     df.to_csv(file_path, index=False)
-    logger.info(f"Data saved to {file_path}")
+    logger.info(f"Data was successfully saved to {file_path}")
 
 
 def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Remove duplicate rows from the DataFrame.
-    How do you decide if a row is duplicated?
-    Which do you keep? Which do you delete?
-
-    Args:
-        df (pd.DataFrame): Input DataFrame.
-
-    Returns:
-        pd.DataFrame: DataFrame with duplicates removed.
-    """
-
-
-def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Remove duplicate rows from the DataFrame.
-    """
-    logger.info(f"FUNCTION START: remove_duplicates with dataframe shape={df.shape}")
-
-    # Create DataScrubber instance
-    df_scrubber = DataScrubber(df)
+    logger.info(f"DUPLICATE REMOVAL FUNCTION START: removing duplicates with dataframe shape={df.shape}")
 
     # Perform deduplication
-    df_deduped = df_scrubber.remove_duplicates()
+    df_deduped = df.drop_duplicates()
 
     # Log shapes
-    logger.info(f"Original dataframe shape: {df.shape}")
-    print(f"Original dataframe shape: {df.shape}")
-    logger.info(f"Deduped dataframe shape: {df_deduped.shape}")
-    print(f"Deduped dataframe shape: {df_deduped.shape}")
+    logger.info(f"Deduplication function successful. Deduped dataframe shape: {df_deduped.shape}")
+    print(f"Deduplication function successful. Deduped dataframe shape: {df_deduped.shape}")
 
     return df_deduped
 
 
 def handle_missing_values(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Handle missing values by filling or dropping.
-    This logic is specific to the actual data and business rules.
-
-    Args:
-        df (pd.DataFrame): Input DataFrame.
-
-    Returns:
-        pd.DataFrame: DataFrame with missing values handled.
-    """
     logger.info(f"FUNCTION START: handle_missing_values with dataframe shape={df.shape}")
 
     # Log missing values count before handling
     missing_before = df.isna().sum().sum()
     logger.info(f"Total missing values before handling: {missing_before}")
+    print(f"Total missing values before handling: {missing_before}")
+
+    if '
 
     # TODO: Fill or drop missing values based on business rules
     # Example:
