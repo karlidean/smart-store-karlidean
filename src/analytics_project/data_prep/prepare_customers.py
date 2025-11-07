@@ -76,7 +76,17 @@ def save_prepared_data(df: pd.DataFrame, file_name: str) -> None:
 
 def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
     """Remove duplicate customer records based on CustomerID."""
-    logger.info(f"DUPLICATE REMOVAL FUNCTION START: removing duplicates with dataframe shape={df.shape}")
+    logger.info(
+        "DUPLICATE REMOVAL FUNCTION START: removing duplicates with dataframe "
+        f"shape={df.shape}"
+    )
+
+    if "CustomerID" not in df.columns:
+        logger.warning(
+            "CustomerID column not found. Skipping duplicate removal because "
+            "CustomerID is required for deduplication."
+        )
+        return df
 
     initial_count = len(df)
 
@@ -89,7 +99,7 @@ def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
     message = (
         "Deduplication function successful. "
         f"Deduped dataframe shape: {df_deduped.shape}. "
-        f"Removed {removed_count} duplicate CustomerID rows."
+        f"Removed {removed_count} rows based on CustomerID."
     )
     logger.info(message)
     print(message)
