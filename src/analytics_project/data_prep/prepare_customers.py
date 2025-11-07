@@ -1,5 +1,4 @@
-"""
-Prepare customer data for analytics.
+"""Prepare customer data for analytics.
 
 Usage (from project root):
     uv run python -m analytics_project.data_preparation.prepare_customers
@@ -28,8 +27,9 @@ Notes:
 
 from __future__ import annotations
 
-import re
 from pathlib import Path
+import re
+
 import pandas as pd
 
 # This file lives at:
@@ -227,6 +227,7 @@ def normalize_column_names(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def main() -> None:
+    """Run the customer data preparation workflow."""
     logger.info("==================================")
     logger.info("STARTING prepare_customers.py")
     logger.info("==================================")

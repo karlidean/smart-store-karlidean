@@ -79,10 +79,12 @@ def save_prepared_data(df: pd.DataFrame, file_name: str) -> None:
 # Cleaning Steps
 # ──────────────────────────────────────────────────────────────────────────────
 def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Remove duplicate product records based on ProductID only.
+    """Remove duplicate product records based on ProductID only.
+
     Keeps the first row for each ProductID.
     """
+    start_shape = df.shape
+
     start_shape = df.shape
 
     if "ProductID" in df.columns:
