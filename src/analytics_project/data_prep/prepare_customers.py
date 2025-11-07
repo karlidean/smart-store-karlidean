@@ -1,5 +1,4 @@
-"""
-scripts/analytics_project/data_preparation/prepare_customers.py
+"""Prepare customer data for analytics.
 
 This script reads customer data from the data/raw folder, cleans the data,
 and writes the cleaned version to the data/prepared folder.
@@ -9,7 +8,6 @@ Tasks:
 - Handle missing values
 - Remove outliers
 - Ensure consistent formatting
-
 """
 
 #####################################
@@ -29,7 +27,6 @@ sys.path.append(str(pathlib.Path(__file__).resolve().parent.parent.parent))
 # Import local modules (e.g. utils/logger.py)
 from analytics_project.utils.logger import logger
 
-
 # Constants
 SCRIPTS_DATA_PREP_DIR: pathlib.Path = (
     pathlib.Path(__file__).resolve().parent
@@ -40,7 +37,7 @@ DATA_DIR: pathlib.Path = PROJECT_ROOT / "data"
 RAW_DATA_DIR: pathlib.Path = DATA_DIR / "raw"
 PREPARED_DATA_DIR: pathlib.Path = DATA_DIR / "prepared"  # place to store prepared data
 
-print(f'Raw Data Directory resolved to: {RAW_DATA_DIR}')
+print(f"Raw Data Directory resolved to: {RAW_DATA_DIR}")
 
 
 # Ensure the directories exist
@@ -68,7 +65,7 @@ def read_raw_data(file_name: str) -> pd.DataFrame:
 
 
 def save_prepared_data(df: pd.DataFrame, file_name: str) -> None:
-    ''' Saves the data to a CSV '''
+    """Save the data to a CSV."""
     logger.info(
         f"SAVING FUNCTION START: Saving prepared data with filename {file_name}, the dataframe's shape is {df.shape}"
     )
@@ -78,27 +75,36 @@ def save_prepared_data(df: pd.DataFrame, file_name: str) -> None:
 
 
 def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
+    """Remove duplicate customer records based on CustomerID."""
     logger.info(f"DUPLICATE REMOVAL FUNCTION START: removing duplicates with dataframe shape={df.shape}")
 
-    # Perform deduplication
-    df_deduped = df.drop_duplicates()
+    initial_count = len(df)
 
-    # Log shapes
-    logger.info(f"Deduplication function successful. Deduped dataframe shape: {df_deduped.shape}")
-    print(f"Deduplication function successful. Deduped dataframe shape: {df_deduped.shape}")
+    # Perform deduplication based on CustomerID while keeping the first occurrence
+    df_deduped = df.drop_duplicates(subset=["CustomerID"], keep="first")
+
+    removed_count = initial_count - len(df_deduped)
+
+    # Log shapes and counts
+    message = (
+        "Deduplication function successful. "
+        f"Deduped dataframe shape: {df_deduped.shape}. "
+        f"Removed {removed_count} duplicate CustomerID rows."
+    )
+    logger.info(message)
+    print(message)
 
     return df_deduped
 
 
 def handle_missing_values(df: pd.DataFrame) -> pd.DataFrame:
+    """Handle missing values using the project's business rules."""
     logger.info(f"FUNCTION START: handle_missing_values with dataframe shape={df.shape}")
 
     # Log missing values count before handling
     missing_before = df.isna().sum().sum()
     logger.info(f"Total missing values before handling: {missing_before}")
     print(f"Total missing values before handling: {missing_before}")
-
-    if '
 
     # TODO: Fill or drop missing values based on business rules
     # Example:
@@ -113,8 +119,8 @@ def handle_missing_values(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def remove_outliers(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Remove outliers based on thresholds.
+    """Remove outliers based on thresholds.
+
     This logic is very specific to the actual data and business rules.
 
     Args:
@@ -142,9 +148,7 @@ def remove_outliers(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def main() -> None:
-    """
-    Main function for processing customer data.
-    """
+    """Run the customer data preparation pipeline."""
     logger.info("==================================")
     logger.info("STARTING prepare_customers_data.py")
     logger.info("==================================")
@@ -173,7 +177,7 @@ def main() -> None:
 
     # Log if any column names changed
     changed_columns = [
-        f"{old} -> {new}" for old, new in zip(original_columns, df.columns) if old != new
+        f"{old} -> {new}" for old, new in zip(original_columns, df.columns, strict=False) if old != new
     ]
     if changed_columns:
         logger.info(f"Cleaned column names: {', '.join(changed_columns)}")
