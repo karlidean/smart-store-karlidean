@@ -79,10 +79,23 @@ def save_prepared_data(df: pd.DataFrame, file_name: str) -> None:
 # Cleaning Steps
 # ──────────────────────────────────────────────────────────────────────────────
 def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
-    """Remove duplicate rows."""
-    logger.info(f"Removing duplicates… start shape={df.shape}")
+    """
+    Remove duplicate product records based on ProductID only.
+    Keeps the first row for each ProductID.
+    """
+    start_shape = df.shape
+
+    if "ProductID" in df.columns:
+        logger.info(f"Removing duplicates using ProductID. start shape={start_shape}")
+        out = df.drop_duplicates(subset=["ProductID"], keep="first")
+        removed = start_shape[0] - out.shape[0]
+        logger.info(f"Removed {removed} duplicated ProductID rows. new shape={out.shape}")
+        return out
+
+    # Fallback if column doesn't exist
+    logger.warning("ProductID column not found — falling back to exact row de-dupe.")
     out = df.drop_duplicates()
-    logger.info(f"Duplicates removed. new shape={out.shape}")
+    logger.info(f"Exact de-dupe result shape={out.shape}")
     return out
 
 

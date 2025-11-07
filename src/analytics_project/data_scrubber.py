@@ -1,4 +1,5 @@
-"""Utilities for cleaning pandas DataFrames.
+"""
+Utilities for cleaning pandas DataFrames.
 
 Provides a reusable `DataScrubber` class with helpers to check consistency,
 remove duplicates, handle missing values, filter outliers, rename/reorder
@@ -28,11 +29,20 @@ class DataScrubber:
         return {"null_counts": null_counts, "duplicate_count": duplicate_count}
 
     def check_data_consistency_after_cleaning(self) -> dict[str, "pd.Series" | int]:
-        """Assert no nulls or duplicates remain and return their counts."""
+        """Verify no nulls or duplicates remain and return their counts.
+
+        Raises:
+            ValueError: If nulls or duplicates remain after cleaning.
+        """
         null_counts = self.df.isnull().sum()
         duplicate_count = self.df.duplicated().sum()
-        assert null_counts.sum() == 0, "Data still contains null values after cleaning."
-        assert duplicate_count == 0, "Data still contains duplicate records after cleaning."
+
+        # Avoid S101 (assert used) by raising explicitly
+        if int(null_counts.sum()) != 0:
+            raise ValueError("Data still contains null values after cleaning.")
+        if int(duplicate_count) != 0:
+            raise ValueError("Data still contains duplicate records after cleaning.")
+
         return {"null_counts": null_counts, "duplicate_count": duplicate_count}
 
     def convert_column_to_new_data_type(
@@ -40,7 +50,11 @@ class DataScrubber:
         column: str,
         new_type: type,
     ) -> "pd.DataFrame":
-        """Convert a column to a new data type."""
+        """Convert a column to a new data type.
+
+        Raises:
+            ValueError: If the column is not found.
+        """
         try:
             self.df[column] = self.df[column].astype(new_type)
         except KeyError as exc:
@@ -48,7 +62,11 @@ class DataScrubber:
         return self.df
 
     def drop_columns(self, columns: list[str]) -> "pd.DataFrame":
-        """Drop specified columns from the DataFrame."""
+        """Drop specified columns from the DataFrame.
+
+        Raises:
+            ValueError: If any requested column is missing.
+        """
         missing = [c for c in columns if c not in self.df.columns]
         if missing:
             raise ValueError(f"Column(s) not found in the DataFrame: {', '.join(missing)}.")
@@ -61,7 +79,11 @@ class DataScrubber:
         lower_bound: float | int,
         upper_bound: float | int,
     ) -> "pd.DataFrame":
-        """Filter rows outside [lower_bound, upper_bound] for a column."""
+        """Filter rows outside [lower_bound, upper_bound] for a column.
+
+        Raises:
+            ValueError: If the column is missing.
+        """
         if column not in self.df.columns:
             raise ValueError(f"Column name '{column}' not found in the DataFrame.")
         mask = (self.df[column] >= lower_bound) & (self.df[column] <= upper_bound)
@@ -69,14 +91,22 @@ class DataScrubber:
         return self.df
 
     def format_column_strings_to_lower_and_trim(self, column: str) -> "pd.DataFrame":
-        """Lowercase and trim whitespace in a string column."""
+        """Lowercase and trim whitespace in a string column.
+
+        Raises:
+            ValueError: If the column is missing.
+        """
         if column not in self.df.columns:
             raise ValueError(f"Column name '{column}' not found in the DataFrame.")
         self.df[column] = self.df[column].astype("string").str.lower().str.strip()
         return self.df
 
     def format_column_strings_to_upper_and_trim(self, column: str) -> "pd.DataFrame":
-        """Uppercase and trim whitespace in a string column."""
+        """Uppercase and trim whitespace in a string column.
+
+        Raises:
+            ValueError: If the column is missing.
+        """
         if column not in self.df.columns:
             raise ValueError(f"Column name '{column}' not found in the DataFrame.")
         self.df[column] = self.df[column].astype("string").str.upper().str.strip()
