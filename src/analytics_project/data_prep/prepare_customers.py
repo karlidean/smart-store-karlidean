@@ -1,4 +1,4 @@
-"""scripts/analytics_project/data_preparation/prepare_customers.py
+"""scripts/analytics_project/data_preparation/prepare_customers.py.
 
 This script reads customer data from the data/raw folder, cleans the data,
 and writes the cleaned version to the data/prepared folder.
