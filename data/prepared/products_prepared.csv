@@ -1,0 +1,101 @@
+ProductID,ProductName,Category,UnitPrice,YearReleased,MonthPurchased,OrderingSKU,SupplierName
+2000,Be,Electronics,969.31,1998,March,1000023516,Mark's Cool Gadgets
+2001,Be,Clothing,412.35,2020,February,1000041342,Spotted Turtle Boutique
+2002,Family,Clothing,866.00,2008,January,1000074741,Spotted Turtle Boutique
+2003,Training,Clothing,385.18,2008,December,1000084778,Spotted Turtle Boutique
+2004,Where,Home,927.25,2010,July,1000036159,Country Farm Homemakers
+2005,Huge,Home,428.78,2021,July,1000029971,Country Farm Homemakers
+2006,Class,Clothing,198.00,2009,April,1000099629,Spotted Turtle Boutique
+2007,Over,Electronics,583.39,2015,December,1000009568,Pinball Wizard Electronics
+2008,Skin,Home,66.59,2015,May,1000077028,Country Farm Homemakers
+2009,Raise,Clothing,66.31,2013,December,1000043803,Spotted Turtle Boutique
+2010,Themselves,Clothing,77.84,2015,February,1000037968,Spotted Turtle Boutique
+2011,Religious,Clothing,409.74,2018,November,1000087090,Spotted Turtle Boutique
+2012,Artist,Electronics,623.19,1993,May,1000060235,Pinball Wizard Electronics
+2013,Cultural,Home,935.36,2009,April,1000081582,Country Farm Homemakers
+2014,Eat,Home,246.30,2009,March,1000032157,Country Farm Homemakers
+2015,Itself,Clothing,674.97,2013,February,1000040577,Spotted Turtle Boutique
+2016,He,Office,323.02,2012,July,1000063823,Corrugated Supply Shop
+2017,Feeling,Electronics,463.70,2019,February,1000010855,Mark's Cool Gadgets
+2018,Nature,Electronics,542.26,2008,August,1000006099,Mark's Cool Gadgets
+2019,History,Clothing,933.93,2004,September,1000001393,Artificial Dreams
+2020,Share,Clothing,375.83,2006,July,1000031118,Spotted Turtle Boutique
+2021,Skill,Office,835.41,2025,November,1000079397,Dunder Mifflin Paper Company
+2022,Economy,Electronics,671.18,2015,October,1000016137,Pinball Wizard Electronics
+2023,Yeah,Electronics,939.54,2015,February,1000010021,Mark's Cool Gadgets
+2024,Paper,Home,124.27,2013,September,1000048608,Country Farm Homemakers
+2025,Assume,Clothing,279.62,1995,June,1000099504,Spotted Turtle Boutique
+2026,Use,Home,211.56,2023,April,1000094311,Cave and Hive Décor
+2027,Purpose,Office,258.61,2015,September,1000029715,Dunder Mifflin Paper Company
+2028,Take,Electronics,637.94,2024,March,1000063427,Pinball Wizard Electronics
+2029,Yourself,Electronics,13.51,2017,June,1000005854,Pinball Wizard Electronics
+2030,First,Home,169.97,2004,March,1000087272,Country Farm Homemakers
+2031,Develop,Office,565.30,2005,April,1000058837,Dunder Mifflin Paper Company
+2032,There,Electronics,945.60,2007,February,1000017557,Mark's Cool Gadgets
+2033,Argue,Electronics,836.25,2017,February,1000005797,Mark's Cool Gadgets
+2034,Feel,Office,136.17,2019,November,1000068552,Dunder Mifflin Paper Company
+2035,According,Home,899.99,2015,January,1000060741,Country Farm Homemakers
+2036,Candidate,Home,217.98,2005,July,1000009981,Cave and Hive Décor
+2037,Meeting,Electronics,360.14,2018,July,1000082696,Mark's Cool Gadgets
+2038,Soon,Clothing,926.51,2001,March,1000041346,Spotted Turtle Boutique
+2039,Need,Clothing,976.44,2015,March,1000081957,Spotted Turtle Boutique
+2040,Determine,Office,34.54,2015,March,1000010346,Corrugated Supply Shop
+2041,Assume,Office,804.21,1989,August,1000055738,Dunder Mifflin Paper Company
+2042,Lawyer,Home,167.61,2023,November,1000003033,Country Farm Homemakers
+2043,Practice,Office,873.45,2023,June,1000025056,Corrugated Supply Shop
+2044,Society,Clothing,207.58,2011,August,1000034079,Spotted Turtle Boutique
+2045,Next,Home,312.14,2015,June,1000020394,Country Farm Homemakers
+2046,Worry,Clothing,33.43,2019,November,1000059019,Spotted Turtle Boutique
+2047,Hair,Office,334.98,2015,September,1000006076,Dunder Mifflin Paper Company
+2048,Candidate,Home,357.63,2015,July,1000061137,Country Farm Homemakers
+2049,Easy,Home,939.84,1991,August,1000041793,Cave and Hive Décor
+2050,Young,Home,186.78,2015,August,1000078548,Country Farm Homemakers
+2051,Century,Electronics,117.32,2016,May,1000049990,Mark's Cool Gadgets
+2052,Year,Home,731.26,1991,April,1000005040,Cave and Hive Décor
+2053,Ground,Office,610.15,2025,March,1000066594,Dunder Mifflin Paper Company
+2054,Above,Office,900.51,2015,March,1000005689,Dunder Mifflin Paper Company
+2055,Politics,Home,53.94,2015,June,1000040674,Country Farm Homemakers
+2056,About,Electronics,524.72,2008,June,1000093751,Mark's Cool Gadgets
+2057,Identify,Home,436.98,1996,July,1000033341,Country Farm Homemakers
+2058,Wear,Home,666.75,2012,November,1000070067,Country Farm Homemakers
+2059,Clear,Home,512.05,2015,April,1000035640,Country Farm Homemakers
+2060,Term,Home,408.38,2001,November,1000018173,Country Farm Homemakers
+2061,Quite,Clothing,199.92,2010,November,1000027318,Spotted Turtle Boutique
+2062,Receive,Clothing,619.36,2015,April,1000097906,Artificial Dreams
+2063,Good,Office,552.46,2010,February,1000068960,Dunder Mifflin Paper Company
+2064,Stop,Home,294.04,1991,May,1000058587,Cave and Hive Décor
+2065,Animal,Home,470.34,2015,December,1000056706,Country Farm Homemakers
+2066,Occur,Clothing,516.06,2012,June,1000032999,Spotted Turtle Boutique
+2067,Remain,Electronics,290.95,2011,April,1000086568,Pinball Wizard Electronics
+2068,Read,Electronics,820.24,2014,October,1000096123,Pinball Wizard Electronics
+2069,Garden,Home,232.39,2010,June,1000016550,Country Farm Homemakers
+2070,About,Clothing,34.18,1994,March,1000075354,Spotted Turtle Boutique
+2071,Success,Office,615.16,2024,July,1000071993,Corrugated Supply Shop
+2072,Become,Office,420.30,2022,May,1000017460,Corrugated Supply Shop
+2073,Executive,Office,499.43,2021,September,1000035445,Corrugated Supply Shop
+2074,Strong,Clothing,659.50,2015,October,1000026249,Spotted Turtle Boutique
+2075,Letter,Electronics,780.64,2015,May,1000022972,Pinball Wizard Electronics
+2076,Affect,Clothing,806.07,1989,June,1000026563,Spotted Turtle Boutique
+2077,Ball,Electronics,561.83,1992,January,1000082995,Pinball Wizard Electronics
+2078,Film,Office,142.01,2015,June,1000074619,Corrugated Supply Shop
+2079,Who,Home,950.54,2015,August,1000048686,Country Farm Homemakers
+2080,Doctor,Office,832.26,2022,September,1000068039,Dunder Mifflin Paper Company
+2081,Light,Clothing,746.22,2012,July,1000049894,Spotted Turtle Boutique
+2082,Figure,Office,266.60,1993,May,1000048883,Dunder Mifflin Paper Company
+2083,Cut,Home,768.16,2013,March,1000019543,Country Farm Homemakers
+2084,Stuff,Clothing,281.85,2008,December,1000063672,Spotted Turtle Boutique
+2085,Officer,Home,242.15,1992,July,1000087622,Cave and Hive Décor
+2086,Of,Home,894.10,2023,October,1000058866,Country Farm Homemakers
+2087,Rather,Clothing,159.32,1998,June,1000052609,Spotted Turtle Boutique
+2088,Evening,Clothing,709.35,2001,June,1000006331,Spotted Turtle Boutique
+2089,Action,Office,413.52,2015,January,1000085584,Dunder Mifflin Paper Company
+2090,Staff,Office,71.64,2015,June,1000011905,Dunder Mifflin Paper Company
+2091,Mrs,Office,905.79,2014,July,1000045807,Corrugated Supply Shop
+2092,Add,Office,482.21,2013,July,1000080508,Dunder Mifflin Paper Company
+2093,Real,Home,755.94,1995,February,1000031028,Cave and Hive Décor
+2094,Fight,Clothing,493.35,2018,February,1000074354,Artificial Dreams
+2095,Seem,Office,490.79,2001,February,1000025702,Corrugated Supply Shop
+2096,Discuss,Home,672.18,2005,February,1000061570,Country Farm Homemakers
+2097,Recent,Clothing,842.10,1989,August,1000092240,Spotted Turtle Boutique
+2098,Trouble,Electronics,907.86,1997,July,1000047824,Pinball Wizard Electronics
+2099,Several,Electronics,646.32,2003,August,1000071056,Pinball Wizard Electronics
