@@ -168,3 +168,8 @@ Add - Commit - Push after EVERY step. Keeps a good habit.
 2. Ran the data prep file and updated the README.md.
    1. Codes used:
       1. `uv run python -m analytics_project.data_prep`
+     
+# P3: Prep for ETL
+1. Struggled a lot with Ruff, but ended up troubleshooting into ChatGPT
+2. Build a DataScrubber (1 logic file, and 3 different file runners (in data_prep folder))
+3. Try to push to GitHub
