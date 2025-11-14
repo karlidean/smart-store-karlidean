@@ -9,54 +9,74 @@ import pandas as pd
 # To make local imports easier.
 # Adjust the paths and code to fit with this updated organization.
 # Questions: Ask them here in this project discussion and we can help.
-PROJECT_ROOT = pathlib.Path(__file__).resolve().parent.parent
+PROJECT_ROOT = pathlib.Path(__file__).resolve().parents[2]
+
+# Ensure imports work
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.append(str(PROJECT_ROOT))
 
-# Constants
-DW_DIR = pathlib.Path("data").joinpath("dw")
-DB_PATH = DW_DIR.joinpath("smart_sales.db")
-PREPARED_DATA_DIR = pathlib.Path("data").joinpath("prepared")
+# Build paths relative to project root
+DW_DIR = PROJECT_ROOT / "data" / "dw"
+DB_PATH = DW_DIR / "smart_sales.db"
+PREPARED_DATA_DIR = PROJECT_ROOT / "data" / "prepared"
+
+
+def reset_schema(cursor: sqlite3.Cursor) -> None:
+    """Drop and recreate all warehouse tables."""
+    # Drop in FK-safe order (child -> parents)
+    cursor.execute("DROP TABLE IF EXISTS sale")
+    cursor.execute("DROP TABLE IF EXISTS product")
+    cursor.execute("DROP TABLE IF EXISTS customer")
 
 
 def create_schema(cursor: sqlite3.Cursor) -> None:
     """Create tables in the data warehouse if they don't exist."""
-    cursor.execute("""
+    cursor.execute(
+        """
         CREATE TABLE IF NOT EXISTS customer (
-              customer_key       INTEGER PRIMARY KEY,  -- = CustomerID
-              customer_name      TEXT,
-              region             TEXT,
-              join_date          TEXT,                 -- store ISO 'YYYY-MM-DD' as TEXT
-              member_points      INTEGER,
-              member_status      TEXT,
-              preferred_contact  TEXT
+              CustomerID        INTEGER PRIMARY KEY,
+              CustomerName      TEXT,
+              Region            TEXT,
+              JoinDate          TEXT,
+              MemberPoints      INTEGER,
+              MemberStatus      TEXT,
+              PreferredContact  TEXT
         )
-    """)
+        """
+    )
 
-    cursor.execute("""
+    cursor.execute(
+        """
         CREATE TABLE IF NOT EXISTS product (
-              product_key     INTEGER PRIMARY KEY,     -- = ProductID
-              product_name    TEXT,
-              category        TEXT,
-              unit_price      REAL,
-              year_released   INTEGER,
-              month_purchased TEXT,
-              ordering_sku    TEXT,
-              supplier_name   TEXT
+              ProductID      INTEGER PRIMARY KEY,
+              ProductName    TEXT,
+              Category       TEXT,
+              UnitPrice      REAL,
+              YearReleased   INTEGER,
+              MonthPurchased TEXT,
+              OrderingSKU    TEXT,
+              SupplierName   TEXT
         )
-    """)
+        """
+    )
 
-    cursor.execute("""
+    cursor.execute(
+        """
         CREATE TABLE IF NOT EXISTS sale (
-            sale_id INTEGER PRIMARY KEY,
-            customer_id INTEGER,
-            product_id INTEGER,
-            sale_amount REAL,
-            sale_date TEXT,
-            FOREIGN KEY (customer_id) REFERENCES customer (customer_id),
-            FOREIGN KEY (product_id) REFERENCES product (product_id)
+            TransactionID     INTEGER PRIMARY KEY,
+            CustomerID INTEGER,
+            ProductID  INTEGER,
+            SaleAmount REAL,
+            SaleDate   TEXT,
+            StoreID     INTEGER,
+            PercentDiscount REAL,
+            SaleFinal   REAL,
+            PaidWithPoints  TEXT,
+            FOREIGN KEY (CustomerID) REFERENCES customer (CustomerID),
+            FOREIGN KEY (ProductID)  REFERENCES product (ProductID)
         )
-    """)
+        """
+    )
 
 
 def delete_existing_records(cursor: sqlite3.Cursor) -> None:
@@ -82,19 +102,29 @@ def insert_sales(sales_df: pd.DataFrame, cursor: sqlite3.Cursor) -> None:
 
 
 def load_data_to_db() -> None:
+    # Making sure the DW directory exists
+    DW_DIR.mkdir(parents=True, exist_ok=True)
+    conn: sqlite3.Connection | None = None
+
     try:
         # Connect to SQLite – will create the file if it doesn't exist
         conn = sqlite3.connect(DB_PATH)
+        print(f"DB will be created at: {DB_PATH}")
+        print(f"Reading prepared data from: {PREPARED_DATA_DIR}")
+
         cursor = conn.cursor()
 
         # Create schema and clear existing records
-        create_schema(cursor)
-        delete_existing_records(cursor)
+        reset_schema(cursor)
 
         # Load prepared data using pandas
-        customers_df = pd.read_csv(PREPARED_DATA_DIR.joinpath("customers_data_prepared.csv"))
-        products_df = pd.read_csv(PREPARED_DATA_DIR.joinpath("products_data_prepared.csv"))
-        sales_df = pd.read_csv(PREPARED_DATA_DIR.joinpath("sales_data_prepared.csv"))
+        customers_df = pd.read_csv(PREPARED_DATA_DIR / "customers_prepared.csv")
+        products_df = pd.read_csv(PREPARED_DATA_DIR / "products_prepared.csv")
+        sales_df = pd.read_csv(PREPARED_DATA_DIR / "sales_prepared.csv")
+
+        print(f'Customers Table Rows: {len(customers_df)}')
+        print(f'Products Table Rows: {len(products_df)}')
+        print(f'Sales Table Rows: {len(sales_df)}')
 
         # Insert data into the database
         insert_customers(customers_df, cursor)
@@ -102,6 +132,7 @@ def load_data_to_db() -> None:
         insert_sales(sales_df, cursor)
 
         conn.commit()
+        print("ETL LOADING STATUS: COMPLETE!")
     finally:
         if conn:
             conn.close()
