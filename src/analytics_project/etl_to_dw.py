@@ -1,3 +1,15 @@
+"""End-to-end ETL loader for the Smart Sales data warehouse.
+
+This script performs the full warehouse refresh process:
+1. Resolves project-root paths for /data/prepared and /data/dw
+2. Drops and recreates all dimension and fact tables in smart_sales.db
+3. Reads cleaned CSV datasets (customers, products, sales)
+4. Loads datasets into SQLite using pandas' to_sql
+5. Produces a repeatable, deterministic warehouse state for downstream analytics
+
+Intended for development, testing, and coursework demonstrations.
+"""
+
 import pathlib
 import sqlite3
 import sys
@@ -102,7 +114,16 @@ def insert_sales(sales_df: pd.DataFrame, cursor: sqlite3.Cursor) -> None:
 
 
 def load_data_to_db() -> None:
-    # Making sure the DW directory exists
+    """Load the prepared CSV datasets into the smart_sales data warehouse.
+
+    This function:
+    - Ensures the data warehouse directory exists
+    - Connects to the SQLite database
+    - Drops and recreates warehouse tables
+    - Loads prepared CSV files
+    - Inserts data into customer, product, and sale tables
+    - Commits and closes the connection
+    """
     DW_DIR.mkdir(parents=True, exist_ok=True)
     conn: sqlite3.Connection | None = None
 
@@ -122,9 +143,9 @@ def load_data_to_db() -> None:
         products_df = pd.read_csv(PREPARED_DATA_DIR / "products_prepared.csv")
         sales_df = pd.read_csv(PREPARED_DATA_DIR / "sales_prepared.csv")
 
-        print(f'Customers Table Rows: {len(customers_df)}')
-        print(f'Products Table Rows: {len(products_df)}')
-        print(f'Sales Table Rows: {len(sales_df)}')
+        print(f"Customers Table Rows: {len(customers_df)}")
+        print(f"Products Table Rows: {len(products_df)}")
+        print(f"Sales Table Rows: {len(sales_df)}")
 
         # Insert data into the database
         insert_customers(customers_df, cursor)
