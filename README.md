@@ -137,6 +137,60 @@ If this works, your project is ready! If not, check:
 
 ---
 
+## Analytics Project Scripts
+
+Use these modules to explore the demo pipeline, reusable helpers, and data preparation workflows.
+
+- `src/analytics_project/main.py`: Orchestrates the full demo pipeline (basics, stats, viz, greetings) with shared logging.
+
+  ```shell
+  uv run python -m analytics_project.main
+  ```
+
+- Demo modules (run individually as needed):
+
+  - `src/analytics_project/demo_module_basics.py`: Logs Python basics for naming, variables, functions, and built-ins.
+  - `src/analytics_project/demo_module_stats.py`: Computes sample statistics on simple data structures.
+  - `src/analytics_project/demo_module_viz.py`: Generates a matplotlib chart to confirm plotting works.
+  - `src/analytics_project/demo_module_languages.py`: Prints greetings in several languages.
+
+  ```shell
+  uv run python -m analytics_project.demo_module_basics
+  uv run python -m analytics_project.demo_module_stats
+  uv run python -m analytics_project.demo_module_viz
+  uv run python -m analytics_project.demo_module_languages
+  ```
+
+- Reusable helper:
+
+  - `src/analytics_project/data_scrubber.py`: `DataScrubber` class with helpers for duplicate removal, missing-value handling, string standardization, column reordering, dtype conversions, and date parsing.
+
+  ```shell
+  uv run python -m analytics_project.data_scrubber
+  ```
+
+- Data preparation scripts (`src/analytics_project/data_prep/`):
+
+  - `prepare_customers.py`: Reads `data/raw/customers_data.csv`, normalizes column names, de-dupes on `CustomerID` when available, fills `MemberPoints` with median, fills `MemberStatus` and preferred contact with mode (handling fuzzy column names), cleans name prefixes/suffixes, removes MemberPoints outliers (±2 std), and writes `data/prepared/customers_prepared.csv`.
+  - `prepare_products.py`: Reads `data/raw/products_data.csv` with encoding fallbacks, removes duplicate `ProductID` rows, fills `ProductName`/`YearReleased`/`UnitPrice`, keeps text after the first hyphen in `ProductName`, extracts 4-digit years, trims/validates numeric price and size columns, removes numeric outliers via IQR, validates non-negative pricing, formats `UnitPrice` to two decimals, and writes `data/prepared/products_prepared.csv`.
+  - `prepare_sales.py`: Reads `data/raw/sales_data.csv` with encoding fallbacks, drops duplicate rows, fills numeric amounts and quantities with medians, parses `OrderDate` and fills with mode, defaults blank `PaidWithPoints` to "No", standardizes monetary/percent columns to numeric rounded strings, trims column name whitespace, removes IQR outliers on sales/quantity, validates non-negative values, formats numeric fields to two decimals, and writes `data/prepared/sales_prepared.csv`.
+
+  ```shell
+  uv run python -m analytics_project.data_prep.prepare_customers
+  uv run python -m analytics_project.data_prep.prepare_products
+  uv run python -m analytics_project.data_prep.prepare_sales
+  ```
+
+- Data warehouse loader:
+
+  - `src/analytics_project/etl_to_dw.py`: Rebuilds the SQLite warehouse schema under `data/dw/smart_sales.db`, reads the prepared customer/product/sales CSVs, aligns columns, and loads them into dimension and fact tables.
+
+  ```shell
+  uv run python -m analytics_project.etl_to_dw
+  ```
+
+---
+
 ### 3.5 Git add-commit-push to GitHub
 
 Anytime we make working changes to code is a good time to git add-commit-push to GitHub.
