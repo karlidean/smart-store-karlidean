@@ -1,13 +1,13 @@
 CustomerID,Name,Region,JoinDate,MemberPoints,MemberStatus,PreferredContact
 1000,Robert Gomez,West,2/25/2024,637043,Bronze,Mail/PO Box
 1001,John Silva,East,12/1/2020,822155,Silver,Email
-1002,Mark Marshall,Central,8/8/2020,308673,Gold, 
+1002,Mark Marshall,Central,8/8/2020,308673,Gold,Mail/PO Box
 1003,David Brennan,North,5/21/2020,487093,Gold,Mail/PO Box
 1004,Kerry Collins,North,9/12/2023,331315,Gold,Phone
 1005,Jessica Mora,South,8/5/2021,289875,Gold,Mail/PO Box
 1006,Hannah Ray,West,7/3/2021,584665,Silver,Email
 1007,David Kim,West,5/20/2020,534354,Diamond,SMS
-1008,William Ramirez,EAST,9/15/2023,973286,Platinum, 
+1008,William Ramirez,EAST,9/15/2023,973286,Platinum,Mail/PO Box
 1009,Zachary Bell,East,4/20/2023,574336,Bronze,Phone
 1010,Mike Davis,East,3/23/2022,824527,Gold,Mail/PO Box
 1011,Amanda Myers,West,9/5/2021,908111,Bronze,Phone
@@ -16,18 +16,18 @@ CustomerID,Name,Region,JoinDate,MemberPoints,MemberStatus,PreferredContact
 1014,Cindy Woods,East,4/2/2024,682720,Platinum,Mail/PO Box
 1015,Jennifer Rodgers,North,2/12/2023,933178,Diamond,Email
 1016,Andrea Roberts,EAST,5/16/2021,859225,Bronze,Mail/PO Box
-1017,Brittney Burnett,North,7/3/2020,925052,Platinum, 
+1017,Brittney Burnett,North,7/3/2020,925052,Platinum,Mail/PO Box
 1018,Edwin Garrison,south-west,8/31/2020,379051,Gold,SMS
-1019,Michelle Torres,Central,11/18/2020,947765,Platinum, 
+1019,Michelle Torres,Central,11/18/2020,947765,Platinum,Mail/PO Box
 1020,Michelle Brewer,East,7/14/2021,676603,Diamond,Email
 1021,Aaron Burnett,South,2/13/2024,394196,Silver,SMS
-1022,Austin Gutierrez,EAST,11/25/2021,22942,Diamond, 
+1022,Austin Gutierrez,EAST,11/25/2021,22942,Diamond,Mail/PO Box
 1023,Dustin Medina,east,6/14/2021,418396,Diamond,Email
 1024,Andres Avila,Central,9/19/2022,271435,Diamond,Phone
 1025,Garrett Lewis,South,8/4/2023,136996,Diamond,Phone
 1026,Gary Walls,North,10/5/2023,749866,Bronze,SMS
 1027,Anthony Schroeder,east,10/4/2020,727395,Platinum,Phone
-1028,Haley Wagner,West,11/3/2023,476102,Platinum, 
+1028,Haley Wagner,West,11/3/2023,476102,Platinum,Mail/PO Box
 1029,Gina Powers,West,10/26/2022,764195,Bronze,Phone
 1030,Alice Robinson,EAST,8/6/2021,506803,Bronze,Phone
 1031,Jessica Frazier,West,10/20/2021,936266,Diamond,Mail/PO Box
@@ -36,32 +36,32 @@ CustomerID,Name,Region,JoinDate,MemberPoints,MemberStatus,PreferredContact
 1034,Heather Smith,Central,9/16/2022,171773,Diamond,SMS
 1035,Lorraine Rodriguez,East,9/26/2022,652137,Diamond,Email
 1036,Robert Bishop,south-west,9/14/2020,268464,Gold,SMS
-1037,Lisa Sanders,West,6/3/2020,902956,Diamond, 
-1038,Jason Ford,EAST,10/9/2023,437670,Silver, 
-1039,Brandy Good,West,5/21/2023,123305,Silver, 
+1037,Lisa Sanders,West,6/3/2020,902956,Diamond,Mail/PO Box
+1038,Jason Ford,EAST,10/9/2023,437670,Silver,Mail/PO Box
+1039,Brandy Good,West,5/21/2023,123305,Silver,Mail/PO Box
 1040,Angel Lee,Central,4/8/2022,385192,Gold,Mail/PO Box
-1041,David Beltran,east,1/18/2021,603122,Gold, 
+1041,David Beltran,east,1/18/2021,603122,Gold,Mail/PO Box
 1042,Christopher Dodson,North,10/30/2023,98700,Platinum,Mail/PO Box
 1043,Eric Pena,West,6/30/2022,401330,Platinum,Mail/PO Box
 1044,Anita Huerta,East,4/8/2022,273693,Platinum,Mail/PO Box
 1045,Susan Bailey,North,10/2/2020,171905,Diamond,SMS
 1046,Tyler Colon,Central,3/3/2021,116211,Diamond,Email
-1047,Ashley Pearson,West,10/4/2020,766596,Gold, 
-1048,Donald Proctor,North,3/17/2024,280020,Silver, 
-1049,Rebecca Jordan,West,10/8/2022,910307,Bronze, 
+1047,Ashley Pearson,West,10/4/2020,766596,Gold,Mail/PO Box
+1048,Donald Proctor,North,3/17/2024,280020,Silver,Mail/PO Box
+1049,Rebecca Jordan,West,10/8/2022,910307,Bronze,Mail/PO Box
 1050,Jeffrey Mclaughlin,EAST,3/28/2022,686069,Diamond,Mail/PO Box
 1051,Amy Nguyen,Central,2/13/2024,100977,Silver,Phone
 1052,Brandon Hinton,south-west,11/10/2022,414398,Bronze,Mail/PO Box
 1053,Benjamin Cline,east,1/25/2022,963191,Silver,Mail/PO Box
-1054,Laura Mcdonald,South,12/3/2022,768260,Silver, 
+1054,Laura Mcdonald,South,12/3/2022,768260,Silver,Mail/PO Box
 1055,William Benitez,east,11/4/2020,706937,Platinum,Phone
 1056,Kristina Wilson,east,5/15/2023,689039,Diamond,Mail/PO Box
-1057,Kathy Hall,North,10/27/2023,629173,Silver, 
-1058,Steven Jackson,Central,6/26/2020,874678,Bronze, 
+1057,Kathy Hall,North,10/27/2023,629173,Silver,Mail/PO Box
+1058,Steven Jackson,Central,6/26/2020,874678,Bronze,Mail/PO Box
 1059,Steve Massey,West,8/6/2020,147048,Silver,SMS
 1060,Christopher Thompson,South,4/10/2023,33651,Silver,SMS
-1061,Taylor Kaufman,North,7/23/2021,400212,Silver, 
-1062,Ashley Harmon,South,2/13/2024,303832,Platinum, 
+1061,Taylor Kaufman,North,7/23/2021,400212,Silver,Mail/PO Box
+1062,Ashley Harmon,South,2/13/2024,303832,Platinum,Mail/PO Box
 1063,Howard Case,south-west,2/15/2021,606069,Platinum,Email
 1064,Joshua Cline,EAST,2/19/2024,35106,Silver,SMS
 1065,Daniel Adams,Central,7/2/2023,568690,Diamond,SMS
@@ -69,14 +69,14 @@ CustomerID,Name,Region,JoinDate,MemberPoints,MemberStatus,PreferredContact
 1067,Lawrence Pearson,east,4/29/2023,499240,Silver,Mail/PO Box
 1068,Melissa Gutierrez,East,12/25/2023,147991,Bronze,Mail/PO Box
 1069,Virginia Warren,North,8/24/2023,766198,Diamond,Mail/PO Box
-1070,Brittany Johnson,East,6/4/2021,991078,Gold, 
+1070,Brittany Johnson,East,6/4/2021,991078,Gold,Mail/PO Box
 1071,Christopher Frost,east,8/21/2020,453155,Silver,Email
-1072,Shannon Schmitt,EAST,8/23/2022,32517,Silver, 
+1072,Shannon Schmitt,EAST,8/23/2022,32517,Silver,Mail/PO Box
 1073,Matthew Clark,Central,8/21/2023,365478,Platinum,Mail/PO Box
 1074,Alyssa Evans,West,10/27/2021,274061,Gold,Phone
 1075,Joseph Chavez,North,1/1/2023,180777,Silver,Mail/PO Box
 1076,Glenn Shelton,east,5/1/2024,199211,Platinum,Mail/PO Box
-1077,Amy Espinoza,North,5/29/2021,589334,Platinum, 
+1077,Amy Espinoza,North,5/29/2021,589334,Platinum,Mail/PO Box
 1078,Danielle Fuller,south-west,12/8/2023,490586,Silver,Mail/PO Box
 1079,Zachary Thompson,EAST,9/5/2022,352488,Platinum,Email
 1080,Thomas Parker,south-west,2/28/2023,869823,Gold,SMS
@@ -87,10 +87,10 @@ CustomerID,Name,Region,JoinDate,MemberPoints,MemberStatus,PreferredContact
 1085,Steven Wright,Central,8/22/2021,901840,Gold,Phone
 1086,Robert Rodriguez,EAST,3/1/2023,684795,Gold,Mail/PO Box
 1087,Carla Tran,EAST,7/22/2020,651066,Gold,Mail/PO Box
-1088,Lindsay Torres,east,12/30/2021,153825,Gold, 
+1088,Lindsay Torres,east,12/30/2021,153825,Gold,Mail/PO Box
 1089,Matthew Hernandez,North,4/12/2023,828126,Diamond,Mail/PO Box
-1090,Nicholas Dunlap,South,10/11/2020,413535,Bronze, 
-1091,Brianna Thomas,south-west,5/23/2023,643111,Bronze, 
+1090,Nicholas Dunlap,South,10/11/2020,413535,Bronze,Mail/PO Box
+1091,Brianna Thomas,south-west,5/23/2023,643111,Bronze,Mail/PO Box
 1092,Timothy Hill,West,9/7/2023,644334,Bronze,Phone
 1093,Christian Medina,East,2/4/2023,968088,Gold,SMS
 1094,Robert Jones,West,11/18/2023,265633,Silver,Mail/PO Box
@@ -121,42 +121,42 @@ CustomerID,Name,Region,JoinDate,MemberPoints,MemberStatus,PreferredContact
 1119,Cameron Hernandez,east,8/8/2022,378984,Platinum,Email
 1120,Daniel Meyer,South,3/15/2024,423050,Diamond,Mail/PO Box
 1121,Stephanie Garrison,East,8/21/2020,752659,Diamond,Phone
-1122,Christopher Martinez,east,10/7/2021,836105,Platinum, 
+1122,Christopher Martinez,east,10/7/2021,836105,Platinum,Mail/PO Box
 1123,Colleen Greene,south-west,8/21/2022,99707,Diamond,Phone
 1124,Megan Novak,East,12/19/2022,538862,Gold,Mail/PO Box
-1125,Debbie Andrews,West,5/22/2021,184398,Platinum, 
+1125,Debbie Andrews,West,5/22/2021,184398,Platinum,Mail/PO Box
 1126,Lee Luna,east,1/19/2021,30066,Gold,Mail/PO Box
 1127,George Edwards,Central,5/12/2023,833825,Gold,Email
 1128,Vincent Day,North,7/3/2022,149995,Platinum,SMS
 1129,Karina Jones,East,11/5/2023,857720,Bronze,SMS
 1130,Mary Sandoval,North,10/6/2020,625167,Platinum,Email
-1131,Mark Gomez,West,6/11/2020,589167,Diamond, 
-1132,Scott Winters,West,9/20/2022,701486,Platinum, 
-1133,Victor Wagner,south-west,6/12/2021,129443,Platinum, 
+1131,Mark Gomez,West,6/11/2020,589167,Diamond,Mail/PO Box
+1132,Scott Winters,West,9/20/2022,701486,Platinum,Mail/PO Box
+1133,Victor Wagner,south-west,6/12/2021,129443,Platinum,Mail/PO Box
 1134,Joseph Aguilar,West,12/5/2023,862558,Platinum,Phone
 1135,Christopher Chen,South,9/10/2023,184601,Diamond,Email
 1136,Scott Hernandez,South,2/9/2024,781403,Diamond,Phone
 1137,Jessica Harmon,south-west,11/5/2022,60643,Platinum,Mail/PO Box
 1138,Bonnie Stewart,South,4/19/2022,986258,Platinum,Mail/PO Box
 1139,Heather Olson,Central,4/20/2021,421346,Bronze,Phone
-1140,Carla Flores,EAST,9/30/2020,293560,Diamond, 
+1140,Carla Flores,EAST,9/30/2020,293560,Diamond,Mail/PO Box
 1141,David Palmer,North,9/16/2022,367466,Diamond,Mail/PO Box
 1142,Marvin Hamilton,North,4/23/2022,820953,Silver,SMS
 1143,Chelsea Castro,Central,2/23/2021,127815,Gold,Phone
 1144,Brian Browning,EAST,5/3/2023,211320,Silver,SMS
 1145,Stephanie Powell,east,2/3/2023,811922,Diamond,Email
-1146,Jonathan Andrade,south-west,6/7/2020,458318,Bronze, 
+1146,Jonathan Andrade,south-west,6/7/2020,458318,Bronze,Mail/PO Box
 1147,William Palmer,south-west,8/14/2023,923938,Diamond,Email
 1148,Dean Allison,West,6/23/2021,966507,Silver,Phone
 1149,Jordan Elliott,North,5/13/2020,793440,Platinum,Email
 1150,Bobby Hunter,North,12/6/2020,923514,Platinum,Email
-1151,Sabrina Lester,West,7/16/2022,128905,Gold, 
-1152,Thomas Garcia,east,9/14/2022,122868,Bronze, 
-1153,Michelle Martinez,East,7/31/2023,368916,Bronze, 
+1151,Sabrina Lester,West,7/16/2022,128905,Gold,Mail/PO Box
+1152,Thomas Garcia,east,9/14/2022,122868,Bronze,Mail/PO Box
+1153,Michelle Martinez,East,7/31/2023,368916,Bronze,Mail/PO Box
 1154,Edward Castillo,North,10/1/2020,457623,Silver,Phone
 1155,Rachel Goodman,North,4/10/2023,984351,Gold,Phone
-1156,Dennis Acevedo,East,6/18/2023,672724,Diamond, 
-1157,Cheryl Wu,West,12/10/2021,532739,Gold, 
+1156,Dennis Acevedo,East,6/18/2023,672724,Diamond,Mail/PO Box
+1157,Cheryl Wu,West,12/10/2021,532739,Gold,Mail/PO Box
 1158,Kelly Gallagher,East,3/2/2024,233854,Silver,Mail/PO Box
 1159,Kelli Smith,North,1/28/2022,256103,Bronze,Mail/PO Box
 1160,Phillip Soto,West,4/21/2023,984712,Platinum,Email
@@ -164,10 +164,10 @@ CustomerID,Name,Region,JoinDate,MemberPoints,MemberStatus,PreferredContact
 1162,Deborah Rice,east,1/14/2022,999080,Silver,SMS
 1163,Elizabeth Vaughn,West,5/1/2023,117102,Diamond,Mail/PO Box
 1164,William Ramsey,North,5/4/2023,980479,Silver,Phone
-1165,Richard Burnett,Central,7/24/2022,46623,Gold, 
+1165,Richard Burnett,Central,7/24/2022,46623,Gold,Mail/PO Box
 1166,David Mccullough,south-west,12/15/2021,202082,Bronze,SMS
 1167,Terry Frederick,North,12/20/2021,444812,Gold,SMS
-1168,Denise Gonzales,South,5/2/2022,792705,Diamond, 
+1168,Denise Gonzales,South,5/2/2022,792705,Diamond,Mail/PO Box
 1169,Michael Edwards,south-west,9/26/2023,431170,Gold,Phone
 1170,Eric Davis,North,10/15/2023,611661,Silver,Email
 1171,Ronald Marquez,south-west,4/21/2024,159093,Bronze,Phone
@@ -176,13 +176,13 @@ CustomerID,Name,Region,JoinDate,MemberPoints,MemberStatus,PreferredContact
 1174,Deborah Saunders,West,12/25/2021,827632,Silver,SMS
 1175,Teresa Lopez,West,10/20/2021,953023,Bronze,Email
 1176,Ashley Williams,EAST,11/24/2021,700473,Bronze,Email
-1177,Katherine West,east,11/1/2020,689466,Platinum, 
+1177,Katherine West,east,11/1/2020,689466,Platinum,Mail/PO Box
 1178,Katherine Kerr,EAST,11/13/2020,284631,Gold,Mail/PO Box
 1179,Desiree Miller,EAST,12/21/2021,96719,Gold,Email
 1180,Jennifer Smith,south-west,10/3/2020,35445,Bronze,Phone
-1181,Tiffany Smith,East,4/7/2024,969014,Diamond, 
+1181,Tiffany Smith,East,4/7/2024,969014,Diamond,Mail/PO Box
 1182,James Gray,West,7/24/2020,583893,Platinum,SMS
-1183,Kenneth Graves,East,5/8/2020,275955,Silver, 
+1183,Kenneth Graves,East,5/8/2020,275955,Silver,Mail/PO Box
 1184,Brittney Chen,EAST,7/20/2023,141075,Silver,SMS
 1185,Cameron Levine,east,7/26/2021,31073,Platinum,Mail/PO Box
 1186,Timothy Williams,West,9/28/2021,193787,Bronze,Mail/PO Box
@@ -191,7 +191,7 @@ CustomerID,Name,Region,JoinDate,MemberPoints,MemberStatus,PreferredContact
 1189,Jennifer Farrell,North,11/18/2022,555893,Bronze,SMS
 1190,Elizabeth Robinson,south-west,12/27/2023,476968,Diamond,Phone
 1191,Kyle Smith,South,10/31/2023,86124,Platinum,SMS
-1192,Gregory Medina,EAST,6/6/2020,107951,Diamond, 
+1192,Gregory Medina,EAST,6/6/2020,107951,Diamond,Mail/PO Box
 1193,Nancy King,South,5/23/2022,981399,Silver,Mail/PO Box
 1194,Casey Brown,Central,2/9/2024,899622,Gold,SMS
 1195,Michael Lee,south-west,8/22/2023,314962,Silver,Mail/PO Box

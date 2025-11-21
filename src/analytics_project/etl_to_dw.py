@@ -119,22 +119,26 @@ def create_schema(cursor: sqlite3.Cursor) -> None:
     cursor.execute(
         """
         CREATE TABLE IF NOT EXISTS fact_sales (
-            TransactionID     INTEGER PRIMARY KEY,
+            -- Surrogate key for the fact table
+            FactSalesID      INTEGER PRIMARY KEY,
+
+            -- Business transaction identifier from source data
+            TransactionID    INTEGER,
 
             -- Foreign Keys
-            CustomerID        INTEGER,
-            ProductID         INTEGER,
-            StoreID           INTEGER,
-            DateID            INTEGER,  -- can be populated later
+            CustomerID       INTEGER,
+            ProductID        INTEGER,
+            StoreID          INTEGER,
+            DateID           INTEGER,  -- can be populated later
 
             -- Raw date (for now, matches CSV)
-            SaleDate          TEXT,
+            SaleDate         TEXT,
 
             -- Measures
-            SaleAmount        REAL,
-            PercentDiscount   REAL,
-            SaleFinal         REAL,
-            PaidWithPoints    TEXT,
+            SaleAmount       REAL,
+            PercentDiscount  REAL,
+            SaleFinal        REAL,
+            PaidWithPoints   TEXT,
 
             FOREIGN KEY (CustomerID) REFERENCES dim_customer (CustomerID),
             FOREIGN KEY (ProductID)  REFERENCES dim_product (ProductID),
@@ -195,14 +199,16 @@ def load_data_to_db() -> None:
         reset_schema(cursor)
         create_schema(cursor)
 
-        # Load prepared data using pandas
+        # Reading data with Pandas
         customers_df = pd.read_csv(PREPARED_DATA_DIR / "customers_prepared.csv")
         products_df = pd.read_csv(PREPARED_DATA_DIR / "products_prepared.csv")
         sales_df = pd.read_csv(PREPARED_DATA_DIR / "sales_prepared.csv")
 
-        print(f"Customers Table Rows: {len(customers_df)}")
-        print(f"Products Table Rows: {len(products_df)}")
-        print(f"Sales Table Rows: {len(sales_df)}")
+        # Align customer CSV with dim_customer schema
+        customers_df = customers_df.rename(columns={"Name": "CustomerName"})
+
+        # Remove columns not present in fact_sales schema
+        sales_df = sales_df.drop(columns=["CampaignID"], errors="ignore")
 
         # Insert data into the database
         insert_customers(customers_df, cursor)

@@ -20,17 +20,22 @@ Expected project layout:
 
 Notes:
 - No duplicate function definitions
-- No half‑written code inside docstrings
+- No half-written code inside docstrings
 - Clear, minimal path logic
 - Safe handling when files/columns are missing
 """
 
 from __future__ import annotations
 
-from pathlib import Path
+
 import re
 
+from pathlib import Path
+
 import pandas as pd
+
+from analytics_project.utils.logger import logger  # noqa: E402
+
 
 # This file lives at:
 # smart-store-karlidean/src/analytics_project/data_preparation/prepare_customers.py
@@ -39,7 +44,7 @@ import pandas as pd
 FILE_PATH = Path(__file__).resolve()
 
 # Your project root is the folder that contains BOTH `src` and `data`
-PROJECT_ROOT = FILE_PATH.parents[3]  # <-- this is correct for your layout
+PROJECT_ROOT = FILE_PATH.parents[3]  # correct for your layout
 
 DATA_DIR = PROJECT_ROOT / "data"
 RAW_DATA_DIR = DATA_DIR / "raw"
@@ -61,24 +66,24 @@ def read_raw_data(file_name: str) -> pd.DataFrame:
     """Read a CSV from data/raw. Returns empty DataFrame on error."""
     file_path = RAW_DATA_DIR / file_name
     try:
-        logger.info(f"READING RAW DATA: {file_path}")
+        logger.info("READING RAW DATA: %s", file_path)
         df = pd.read_csv(file_path)
-        logger.info(f"Loaded {len(df)} rows, {len(df.columns)} columns")
+        logger.info("Loaded %s rows, %s columns", len(df), len(df.columns))
         return df
     except FileNotFoundError:
-        logger.error(f"File not found: {file_path}")
+        logger.error("File not found: %s", file_path)
         return pd.DataFrame()
-    except Exception as e:  # noqa: BLE001
-        logger.exception(f"Error reading {file_path}: {e}")
+    except Exception as exc:  # noqa: BLE001
+        logger.exception("Error reading %s: %s", file_path, exc)
         return pd.DataFrame()
 
 
 def save_prepared_data(df: pd.DataFrame, file_name: str) -> None:
     """Write DataFrame to data/prepared."""
     out_path = PREPARED_DATA_DIR / file_name
-    logger.info(f"WRITING CLEANED DATA: {out_path}")
+    logger.info("WRITING CLEANED DATA: %s", out_path)
     df.to_csv(out_path, index=False)
-    logger.info(f"Saved cleaned data ({len(df)} rows) to: {out_path}")
+    logger.info("Saved cleaned data (%s rows) to: %s", len(df), out_path)
 
 
 # --- Duplicate handling -------------------------------------------------------
@@ -90,13 +95,13 @@ def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
     If a `CustomerID` column exists, de-dupe on it (keep first). Otherwise, drop
     exact duplicate rows.
     """
-    logger.info(f"Removing duplicates… start shape={df.shape}")
+    logger.info("Removing duplicates… start shape=%s", df.shape)
     if "CustomerID" in df.columns:
         out = df.drop_duplicates(subset=["CustomerID"], keep="first")
     else:
         logger.warning("CustomerID not found — dropping exact duplicate rows.")
         out = df.drop_duplicates()
-    logger.info(f"Duplicates removed. new shape={out.shape}")
+    logger.info("Duplicates removed. new shape=%s", out.shape)
     return out
 
 
@@ -108,16 +113,21 @@ def handle_missing_values(df: pd.DataFrame) -> pd.DataFrame:
 
     - MemberPoints: coerce to numeric, fill NaNs with median if any non-NaN
     - MemberStatus: fill with mode
-    - Preferred_Contact / Preferred Contact: treat blanks as NA, fill with mode
+    - Preferred Contact: treat blanks/placeholder strings as NA, fill with mode
     """
     logger.info("Handling missing values…")
-    logger.info(f"Missing by column (before):\n{df.isna().sum().to_string()}")
+    logger.info(
+        "Missing by column (before):\n%s",
+        df.isna().sum().to_string(),
+    )
 
     # MemberPoints -> numeric + median
     if "MemberPoints" in df.columns:
         df["MemberPoints"] = pd.to_numeric(df["MemberPoints"], errors="coerce")
         if df["MemberPoints"].notna().any():
-            df["MemberPoints"] = df["MemberPoints"].fillna(df["MemberPoints"].median())
+            df["MemberPoints"] = df["MemberPoints"].fillna(
+                df["MemberPoints"].median(),
+            )
 
     # MemberStatus -> mode
     if "MemberStatus" in df.columns:
@@ -126,24 +136,72 @@ def handle_missing_values(df: pd.DataFrame) -> pd.DataFrame:
             df["MemberStatus"] = df["MemberStatus"].fillna(mode.iat[0])
 
     # Preferred Contact variations -> normalize + fill with mode
-    contact_col = None
+    contact_col: str | None = None
+
+    # 1) Try exact known names
     if "Preferred_Contact" in df.columns:
         contact_col = "Preferred_Contact"
     elif "Preferred Contact" in df.columns:
         contact_col = "Preferred Contact"
+    elif "PreferredContact" in df.columns:
+        contact_col = "PreferredContact"
+    else:
+        # 2) Fuzzy match: any col that contains both 'preferred' and 'contact'
+        for col in df.columns:
+            col_lower = col.lower()
+            if "preferred" in col_lower and "contact" in col_lower:
+                contact_col = col
+                logger.info(
+                    "Inferred Preferred Contact column as: %r",
+                    contact_col,
+                )
+                break
 
-    if contact_col:
-        df[contact_col] = df[contact_col].astype(str)
-        df[contact_col] = df[contact_col].replace(r"^\s*$", pd.NA, regex=True)
+    if contact_col is not None:
+        logger.info("Cleaning Preferred Contact column: %r", contact_col)
+
+        # Treat true blanks / whitespace as missing
+        df[contact_col] = df[contact_col].replace(
+            r"^\s*$",
+            pd.NA,
+            regex=True,
+        )
+
+        # Also treat common placeholder strings as missing
+        df[contact_col] = df[contact_col].replace(
+            ["nan", "NaN", "None", "NONE", "N/A", "n/a"],
+            pd.NA,
+        )
+
+        # Fill with mode
         mode_pc = df[contact_col].mode(dropna=True)
         if not mode_pc.empty:
-            df[contact_col] = df[contact_col].fillna(mode_pc.iat[0])
+            fill_value = mode_pc.iat[0]
+            logger.info(
+                "Filling Preferred Contact missing values with mode: %r",
+                fill_value,
+            )
+            df[contact_col] = df[contact_col].fillna(fill_value)
+        else:
+            logger.warning(
+                "Preferred Contact column %r has no non-null values; skipping mode fill.",
+                contact_col,
+            )
+    else:
+        logger.warning(
+            "No Preferred Contact column found (by name or pattern). Available columns: %s",
+            list(df.columns),
+        )
 
-    logger.info(f"Missing by column (after):\n{df.isna().sum().to_string()}")
+    logger.info(
+        "Missing by column (after):\n%s",
+        df.isna().sum().to_string(),
+    )
     return df
 
 
 # --- Text standardization (names) --------------------------------------------
+
 _PREFIXES = r"(mr|mrs|ms|miss|dr|prof)"
 _SUFFIXES = r"(jr|sr|ii|iii|iv|md|dds|phd|dmd|esq|esquire)"
 _prefix_pat = re.compile(rf"^{_PREFIXES}\.?\s+", flags=re.IGNORECASE)
@@ -193,7 +251,9 @@ def remove_outliers(df: pd.DataFrame) -> pd.DataFrame:
     std_val = mp.std()
 
     if pd.isna(mean_val) or pd.isna(std_val) or std_val == 0:
-        logger.warning("Insufficient variance in MemberPoints; skipping outlier removal.")
+        logger.warning(
+            "Insufficient variance in MemberPoints; skipping outlier removal.",
+        )
         return df
 
     lower = mean_val - 2 * std_val
@@ -203,7 +263,11 @@ def remove_outliers(df: pd.DataFrame) -> pd.DataFrame:
     mask = (mp >= lower) & (mp <= upper)
     out = df.loc[mask].copy()
     removed = start - len(out)
-    logger.info(f"Outlier removal complete. Removed {removed} rows. Remaining: {len(out)}")
+    logger.info(
+        "Outlier removal complete. Removed %s rows. Remaining: %s",
+        removed,
+        len(out),
+    )
     return out
 
 
@@ -222,7 +286,10 @@ def normalize_column_names(df: pd.DataFrame) -> pd.DataFrame:
     )
     if old_cols != df.columns.tolist():
         renames = [f"{o} -> {n}" for o, n in zip(old_cols, df.columns, strict=False) if o != n]
-        logger.info("Column normalization applied: " + ", ".join(renames))
+        logger.info(
+            "Column normalization applied: %s",
+            ", ".join(renames),
+        )
     return df
 
 
@@ -231,9 +298,9 @@ def main() -> None:
     logger.info("==================================")
     logger.info("STARTING prepare_customers.py")
     logger.info("==================================")
-    logger.info(f"Project root : {PROJECT_ROOT}")
-    logger.info(f"data/raw     : {RAW_DATA_DIR}")
-    logger.info(f"data/prepared: {PREPARED_DATA_DIR}")
+    logger.info("Project root : %s", PROJECT_ROOT)
+    logger.info("data/raw     : %s", RAW_DATA_DIR)
+    logger.info("data/prepared: %s", PREPARED_DATA_DIR)
 
     input_file = "customers_data.csv"
     output_file = "customers_prepared.csv"
@@ -243,8 +310,8 @@ def main() -> None:
         logger.error("No data to process (empty DataFrame). Exiting.")
         return
 
-    logger.info(f"Initial shape: {df.shape}")
-    logger.info(f"Initial columns: {list(df.columns)}")
+    logger.info("Initial shape: %s", df.shape)
+    logger.info("Initial columns: %s", list(df.columns))
 
     # Cleaning pipeline
     df = normalize_column_names(df)
@@ -256,7 +323,7 @@ def main() -> None:
     save_prepared_data(df, output_file)
 
     logger.info("====== CLEANING COMPLETE ======")
-    logger.info(f"Final rows:    {df.shape[0]}")
+    logger.info("Final rows:    %s", df.shape[0])
     logger.info("================================")
 
 
