@@ -34,83 +34,139 @@ PREPARED_DATA_DIR = PROJECT_ROOT / "data" / "prepared"
 
 
 def reset_schema(cursor: sqlite3.Cursor) -> None:
-    """Drop and recreate all warehouse tables."""
-    # Drop in FK-safe order (child -> parents)
-    cursor.execute("DROP TABLE IF EXISTS sale")
-    cursor.execute("DROP TABLE IF EXISTS product")
-    cursor.execute("DROP TABLE IF EXISTS customer")
+    """Drop all warehouse tables (fact then dimensions)."""
+    # Drop fact table first (it depends on dimensions)
+    cursor.execute("DROP TABLE IF EXISTS fact_sales")
+    cursor.execute("DROP TABLE IF EXISTS dim_date")
+    cursor.execute("DROP TABLE IF EXISTS dim_store")
+    cursor.execute("DROP TABLE IF EXISTS dim_product")
+    cursor.execute("DROP TABLE IF EXISTS dim_customer")
 
 
 def create_schema(cursor: sqlite3.Cursor) -> None:
-    """Create tables in the data warehouse if they don't exist."""
+    """Create tables in a star schema for the data warehouse."""
+
+    # -----------------------
+    # Dimension: Customer
+    # -----------------------
     cursor.execute(
         """
-        CREATE TABLE IF NOT EXISTS customer (
-              CustomerID        INTEGER PRIMARY KEY,
-              CustomerName      TEXT,
-              Region            TEXT,
-              JoinDate          TEXT,
-              MemberPoints      INTEGER,
-              MemberStatus      TEXT,
-              PreferredContact  TEXT
+        CREATE TABLE IF NOT EXISTS dim_customer (
+            CustomerID        INTEGER PRIMARY KEY,
+            CustomerName      TEXT,
+            Region            TEXT,
+            JoinDate          TEXT,
+            MemberPoints      INTEGER,
+            MemberStatus      TEXT,
+            PreferredContact  TEXT
         )
         """
     )
 
+    # -----------------------
+    # Dimension: Product
+    # -----------------------
     cursor.execute(
         """
-        CREATE TABLE IF NOT EXISTS product (
-              ProductID      INTEGER PRIMARY KEY,
-              ProductName    TEXT,
-              Category       TEXT,
-              UnitPrice      REAL,
-              YearReleased   INTEGER,
-              MonthPurchased TEXT,
-              OrderingSKU    TEXT,
-              SupplierName   TEXT
+        CREATE TABLE IF NOT EXISTS dim_product (
+            ProductID      INTEGER PRIMARY KEY,
+            ProductName    TEXT,
+            Category       TEXT,
+            UnitPrice      REAL,
+            YearReleased   INTEGER,
+            MonthPurchased TEXT,
+            OrderingSKU    TEXT,
+            SupplierName   TEXT
         )
         """
     )
 
+    # -----------------------
+    # Dimension: Store
+    # -----------------------
     cursor.execute(
         """
-        CREATE TABLE IF NOT EXISTS sale (
+        CREATE TABLE IF NOT EXISTS dim_store (
+            StoreID         INTEGER PRIMARY KEY,
+            StoreName       TEXT,
+            Region          TEXT,
+            StoreType       TEXT
+        )
+        """
+    )
+
+    # -----------------------
+    # Dimension: Date
+    # -----------------------
+    cursor.execute(
+        """
+        CREATE TABLE IF NOT EXISTS dim_date (
+            DateID         INTEGER PRIMARY KEY,
+            DateValue      TEXT,
+            Year           INTEGER,
+            Quarter        INTEGER,
+            Month          INTEGER,
+            Week           INTEGER,
+            Day            INTEGER,
+            DayOfWeek      TEXT
+        )
+        """
+    )
+
+    # -----------------------
+    # Fact Table: Sales
+    # -----------------------
+    cursor.execute(
+        """
+        CREATE TABLE IF NOT EXISTS fact_sales (
             TransactionID     INTEGER PRIMARY KEY,
-            CustomerID INTEGER,
-            ProductID  INTEGER,
-            SaleAmount REAL,
-            SaleDate   TEXT,
-            StoreID     INTEGER,
-            PercentDiscount REAL,
-            SaleFinal   REAL,
-            PaidWithPoints  TEXT,
-            FOREIGN KEY (CustomerID) REFERENCES customer (CustomerID),
-            FOREIGN KEY (ProductID)  REFERENCES product (ProductID)
+
+            -- Foreign Keys
+            CustomerID        INTEGER,
+            ProductID         INTEGER,
+            StoreID           INTEGER,
+            DateID            INTEGER,  -- can be populated later
+
+            -- Raw date (for now, matches CSV)
+            SaleDate          TEXT,
+
+            -- Measures
+            SaleAmount        REAL,
+            PercentDiscount   REAL,
+            SaleFinal         REAL,
+            PaidWithPoints    TEXT,
+
+            FOREIGN KEY (CustomerID) REFERENCES dim_customer (CustomerID),
+            FOREIGN KEY (ProductID)  REFERENCES dim_product (ProductID),
+            FOREIGN KEY (StoreID)    REFERENCES dim_store (StoreID),
+            FOREIGN KEY (DateID)     REFERENCES dim_date (DateID)
         )
         """
     )
 
 
 def delete_existing_records(cursor: sqlite3.Cursor) -> None:
-    """Delete all existing records from the customer, product, and sale tables."""
-    cursor.execute("DELETE FROM customer")
-    cursor.execute("DELETE FROM product")
-    cursor.execute("DELETE FROM sale")
+    """Delete all existing records from the warehouse tables."""
+    cursor.execute("DELETE FROM fact_sales")
+    cursor.execute("DELETE FROM dim_customer")
+    cursor.execute("DELETE FROM dim_product")
+    cursor.execute("DELETE FROM dim_store")
+    cursor.execute("DELETE FROM dim_date")
 
 
 def insert_customers(customers_df: pd.DataFrame, cursor: sqlite3.Cursor) -> None:
-    """Insert customer data into the customer table."""
-    customers_df.to_sql("customer", cursor.connection, if_exists="append", index=False)
+    """Insert customer data into the dim_customer table."""
+    customers_df.to_sql("dim_customer", cursor.connection, if_exists="append", index=False)
 
 
 def insert_products(products_df: pd.DataFrame, cursor: sqlite3.Cursor) -> None:
-    """Insert product data into the product table."""
-    products_df.to_sql("product", cursor.connection, if_exists="append", index=False)
+    """Insert product data into the dim_product table."""
+    products_df.to_sql("dim_product", cursor.connection, if_exists="append", index=False)
 
 
 def insert_sales(sales_df: pd.DataFrame, cursor: sqlite3.Cursor) -> None:
-    """Insert sales data into the sales table."""
-    sales_df.to_sql("sale", cursor.connection, if_exists="append", index=False)
+    """Insert sales data into the fact_sales table."""
+    sales_df.to_sql("fact_sales", cursor.connection, if_exists="append", index=False)
 
 
 def load_data_to_db() -> None:
@@ -135,8 +191,9 @@ def load_data_to_db() -> None:
 
         cursor = conn.cursor()
 
-        # Create schema and clear existing records
+        # Drop and recreate schema
         reset_schema(cursor)
+        create_schema(cursor)
 
         # Load prepared data using pandas
         customers_df = pd.read_csv(PREPARED_DATA_DIR / "customers_prepared.csv")
