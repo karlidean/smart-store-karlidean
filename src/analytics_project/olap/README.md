@@ -1,5 +1,6 @@
 # Project 6 - OLAP Analysis - Total Customer Purchases by Product
-**Author:** Karli Dean
+**Author:** Karli Dean\
+\
 **Date:** November 28, 2025
 
 ## Methods and Introduction
