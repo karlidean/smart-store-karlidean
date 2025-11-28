@@ -9,7 +9,9 @@
 **Purpose:** This is an analysis to understand what kinds of customers are purchasing certain kinds of products from different suppliers.
 
 ## Data
-In previous projects, we have prepared a data warehouse and a star/relational schema. I will be using this data warehouse for my analysis. You can find this data [here](link to prepared folder). This data warehouse is repeatable in us being able to update our raw data files (found [here](link to raw data)), so the data can be re-cleaned and standardized before entering the data warehouse.
+In previous projects, we have prepared a data warehouse and a star/relational schema. I will be using this data warehouse for my analysis. You can find this data [here](https://github.com/karlidean/smart-store-karlidean/tree/main/data/prepared).\
+\
+This data warehouse is repeatable in us being able to update our raw data files (found [here](https://github.com/karlidean/smart-store-karlidean/tree/main/data/raw)), so the data can be re-cleaned and standardized before entering the data warehouse.
 
 ## Tools I Used
 In previous projects (P3-P5) I used much of Python and SQL, but now we will be using PowerBI as we have implemented the relational warehouse last project into the PowerBI system.
