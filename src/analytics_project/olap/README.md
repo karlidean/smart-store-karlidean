@@ -18,8 +18,8 @@ In previous projects (P3-P5) I used much of Python and SQL, but now we will be u
 
 ## Workflow and Logic (Post - Project Setup in VS Code)
 ### Implementing the DSN
-1. Implemented ODBC with PowerBI and entered all dimension tables into my system. You can find this screenshot [here](link to photo).
-   1. Used schema outlined in P3 - P5. You can find this screenshot [here](link to photo).
+1. Implemented ODBC with PowerBI and entered all dimension tables into my system. 
+   1. Used schema outlined in P3 - P5. You can find this screenshot [here](https://github.com/karlidean/smart-store-karlidean/blob/main/src/analytics_project/olap/images/dimensions_in_powerBI.png).
 2. Implemented Slicing, Dicing, and Drilldown methods outlined below:
 
 ### Slicing (Filtering by 1 Dimension to Isolate that Metric's Performance)
@@ -39,17 +39,17 @@ In previous projects (P3-P5) I used much of Python and SQL, but now we will be u
 ### Slicing
 Ashley Todd had spent $9,290.54 in her time with us as a customer. Her highest valued and priced category was the "Home" product category. She loved the "Home-Year" items, where she purchased $2,774.86 worth ot items. \
 \
-You can find this matrix [here](link to png in folder).
+You can find this matrix [here](https://github.com/karlidean/smart-store-karlidean/blob/main/src/analytics_project/olap/images/slicing_matrix.png).
 
 ### Dicing
 Breaking down by region, we were able to see what membership levels are purchasing from certain suppliers. We were able to see that our more active members are of higher tiers on average. However, the Gold Tier Membership are the customers getting the most out of their membership, especially in the Central Region. They blow every other member tier out of the water when it comes to count of sales. Looking at sales from Pinball Wizard Electronics, we can see clearly that it is a fan-favorite among our Gold Members! \
 \
-You can find this chart [here](link to png in folder.)
+You can find this chart [here](https://github.com/karlidean/smart-store-karlidean/blob/main/src/analytics_project/olap/images/dicing_stackedbar.png).
 
 ### Drilldown
 In our drilldown, we were able to see what kinds of customers liked certain suppliers, but now we can see how many purchases for each product and by what kind of member. To look further into this, I drilled into the our most purchased from category, "home", and further into our most purchased from supplier in that category, Country Farm Homemakers. We can now see a breakout of the types of customers purchasing different items. We can see that the "Term" nd "Young" items are very comparable in amount of sales, also being a fan-favorite of the Diamond Members! \
 \
-You can find this chart [here](link to png in folder).
+You can find this chart [here](https://github.com/karlidean/smart-store-karlidean/blob/main/src/analytics_project/olap/images/drilldown_columnstable.png).
 
 ## Suggested Business Action
 1. **Make products more universally friendly.** I think this store needs to understand their customer base per region, knowing where certain products would perform better. For example, you'd want to increase the supply of Pinball Wizard Electronics products in the Central Region stores in order to increase profit from a high-margin category. Products that do not perform as well, like Country Farm Homemakers products in the South/Southwest regions can still be in store, it would just need to be noted to have less inventory holding at those locations due to lower sale amounts.
