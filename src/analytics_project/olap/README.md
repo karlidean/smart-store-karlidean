@@ -9,7 +9,7 @@
 **Purpose:** This is an analysis to understand what kinds of customers are purchasing certain kinds of products from different suppliers.
 
 ## Data
-In previous projects, we have prepared a data warehouse and a star/relational schema. I will be using this data warehouse for my analysis. You can find this data [here](https://github.com/karlidean/smart-store-karlidean/tree/main/data/prepared).\
+In previous projects, we have prepared a data warehouse and a star/relational schema. I will be using this data warehouse for my analysis. You can find this data [here](https://github.com/karlidean/smart-store-karlidean/tree/main/data/prepared).The script for the data warehouse creation can be defined [here](https://github.com/karlidean/smart-store-karlidean/blob/main/src/analytics_project/etl_to_dw.py).\
 \
 This data warehouse is repeatable in us being able to update our raw data files (found [here](https://github.com/karlidean/smart-store-karlidean/tree/main/data/raw)), so the data can be re-cleaned and standardized before entering the data warehouse.
 
