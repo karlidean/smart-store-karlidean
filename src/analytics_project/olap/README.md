@@ -13,14 +13,14 @@ In previous projects (P3-P5) I used much of Python and SQL, but now we will be u
 
 ## Workflow and Logic (Post - Project Setup in VS Code)
 ### Slicing (Filtering by 1 Dimension to Isolate that Metric's Performance)
-**Objective:** Determine the amount of sales brought in by a single customer per item.
+**Objective:** Determine the amount of sales brought in by a single customer per item.\
 **Methodology:** Set up a matrix with the product's names and cetegories, tallying the final sale amount. I filtered by the customer named "Ashley Todd".
 ### Dicing (Filtering by 2 Cross-Compatible Dimensions to Show Comparative Performance Metrics)
-**Objective:** Determine the types of members purchasing certain item categories.
-**Results:** Create a stacked bar chart of total sales with categories and member statuses, with slicers of regions and supplier names.
+**Objective:** Determine the types of members purchasing certain item categories.\
+**Methodology:** Create a stacked bar chart of total sales with categories and member statuses, with slicers of regions and supplier names.
 ### Drill-Down (Creating a Heirarchy and Defining Deep Insights)
-**Objective:** Determine how many sales per product we are receiving per supplier.
-**Results:** Create a product hierarchy to understand the product specifications, and use column charts to help define and drill down into the most valuable category and supplier. Legend by the member's status to help understand what kinds of customers are valuing what product specifically.
+**Objective:** Determine how many sales per product we are receiving per supplier.\
+**Methodology:** Create a product hierarchy to understand the product specifications, and use column charts to help define and drill down into the most valuable category and supplier. Legend by the member's status to help understand what kinds of customers are valuing what product specifically.
 
 ## Results
 ### Slicing
